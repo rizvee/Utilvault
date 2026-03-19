@@ -195,77 +195,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const size = parseInt(sizeSlider.value);
     const errorLevel = logoDataUrl ? 'H' : 'M'; // High correction when logo present
 
-    // Build QRCode options
-    const qrOptions = {
-      width: size,
-      height: size,
-      colorDark: dotColorInput.value,
-      colorLight: bgColorInput.value,
-      correctLevel: QRCode.CorrectLevel[errorLevel]
-    };
-
-    // Clear previous output
-    qrCanvasWrap.innerHTML = '';
-
-    // Create a temp div for QRCode (library renders into a div)
-    const tempDiv = document.createElement('div');
-    tempDiv.style.display = 'none';
-    document.body.appendChild(tempDiv);
-
-    // Use QRCode library
-    new QRCode(tempDiv, {
-      text: content,
-      width: size,
-      height: size,
-      colorDark: dotColorInput.value,
-      colorLight: bgColorInput.value,
-      correctLevel: QRCode.CorrectLevel[errorLevel],
-      useSVG: false
-    });
-
-    // Wait a tick for rendering
-    await new Promise(r => setTimeout(r, 100));
-
-    const generatedCanvas = tempDiv.querySelector('canvas');
-    if (!generatedCanvas) {
-      document.body.removeChild(tempDiv);
-      showToast('QR generation failed — try a shorter content string.');
-      return;
-    }
-
-    // Clone canvas to our display area
+    // Create the display canvas
     const displayCanvas = document.createElement('canvas');
     displayCanvas.width  = size;
     displayCanvas.height = size;
-    const ctx = displayCanvas.getContext('2d');
-    ctx.drawImage(generatedCanvas, 0, 0);
-    document.body.removeChild(tempDiv);
 
-    // Apply rounded corner style to the QR display canvas wrapper
-    displayCanvas.style.borderRadius = '16px';
-    displayCanvas.style.maxWidth = '100%';
-    displayCanvas.style.boxShadow = 'var(--shadow-lg)';
+    try {
+      // Use soldair/qrcode: QRCode.toCanvas(canvas, text, options)
+      await QRCode.toCanvas(displayCanvas, content, {
+        width: size,
+        margin: 2,
+        errorCorrectionLevel: errorLevel,
+        color: {
+          dark:  dotColorInput.value,
+          light: bgColorInput.value
+        }
+      });
 
-    // Composite logo if provided
-    if (logoDataUrl && logoSizeSlider) {
-      const fraction = parseInt(logoSizeSlider.value) / 100;
-      await compositeLogoOnCanvas(displayCanvas, logoDataUrl, fraction);
+      // Composite logo if provided
+      if (logoDataUrl && logoSizeSlider) {
+        const fraction = parseInt(logoSizeSlider.value) / 100;
+        await compositeLogoOnCanvas(displayCanvas, logoDataUrl, fraction);
+      }
+
+      // Render into the page
+      qrCanvasWrap.innerHTML = '';
+      displayCanvas.style.borderRadius = '16px';
+      displayCanvas.style.maxWidth     = '100%';
+      displayCanvas.style.boxShadow    = 'var(--shadow-lg)';
+
+      lastCanvas = displayCanvas;
+      qrCanvasWrap.appendChild(displayCanvas);
+
+      qrPlaceholder?.remove();
+      downloadActions.style.display = 'flex';
+      qrInfo.style.display          = 'flex';
+
+      qrInfo.innerHTML = `
+        <div class="info-chip"><i class="fa-solid fa-text-width"></i> ${content.length} chars</div>
+        <div class="info-chip"><i class="fa-solid fa-expand"></i> ${size}×${size} px</div>
+        ${logoDataUrl ? '<div class="info-chip"><i class="fa-solid fa-image"></i> Logo included</div>' : ''}
+        <div class="info-chip"><i class="fa-solid fa-shield"></i> Level ${errorLevel}</div>
+      `;
+    } catch (err) {
+      console.error(err);
+      showToast('QR generation failed — try shorter content.');
     }
-
-    lastCanvas = displayCanvas;
-    qrCanvasWrap.appendChild(displayCanvas);
-
-    // Show actions
-    qrPlaceholder?.remove();
-    downloadActions.style.display = 'flex';
-    qrInfo.style.display = 'flex';
-
-    qrInfo.innerHTML = `
-      <div class="info-chip"><i class="fa-solid fa-text-width"></i> ${content.length} chars</div>
-      <div class="info-chip"><i class="fa-solid fa-expand"></i> ${size}×${size} px</div>
-      ${logoDataUrl ? '<div class="info-chip"><i class="fa-solid fa-image"></i> Logo included</div>' : ''}
-      <div class="info-chip"><i class="fa-solid fa-shield"></i> ${errorLevel} correction</div>
-    `;
   }
 
   generateBtn.addEventListener('click', generate);
