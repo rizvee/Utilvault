@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO -->
+  <title>QR Code Generator — Custom Logo & Colors | Utilvault</title>
+  <meta name="description" content="Free QR code generator with custom logo/image overlay, color customization, dot styles, and instant PNG/SVG download. No sign-up required. Works 100% in your browser.">
+  <meta name="keywords" content="QR code generator, custom QR code, QR code with logo, free QR generator, QR code maker, generate QR code online, custom QR code maker">
+  <meta name="author" content="Hasan Rizvee">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/qr-generator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rizvee.github.io/Utilvault/qr-generator/">
+  <meta property="og:title" content="QR Code Generator — Custom Logo & Colors | Utilvault">
+  <meta property="og:description" content="Generate custom QR codes with logo overlays, color themes, and dot styles. Download as PNG instantly. Free.">
+  <meta property="og:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+  <meta property="og:site_name" content="Utilvault">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QR Code Generator — Custom Logo & Colors | Utilvault">
+  <meta name="twitter:description" content="Generate beautiful QR codes with custom logos, colors and styles. Free, instant download.">
+  <meta name="twitter:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+
+  <meta name="theme-color" content="#06b6d4">
+
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- QR Code Library (soldair/qrcode — stable, widely used) -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "QR Code Generator",
+        "url": "https://rizvee.github.io/Utilvault/qr-generator/",
+        "description": "Free QR code generator with custom logo overlay, color customization, and instant download.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": {
+          "@type": "Person",
+          "name": "Hasan Rizvee",
+          "url": "https://rizvee.github.io",
+          "sameAs": ["https://github.com/rizvee", "https://linkedin.com/in/hasanrizvee"]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",            "item": "https://rizvee.github.io/Utilvault/" },
+          { "@type": "ListItem", "position": 2, "name": "QR Code Generator", "item": "https://rizvee.github.io/Utilvault/qr-generator/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header role="banner">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="../index.html" class="logo" aria-label="Utilvault home">
+        <i class="fa-solid fa-vault" aria-hidden="true"></i> Util<span>vault</span>
+      </a>
+      <div class="nav-links" id="nav-links" role="menubar">
+        <a href="../index.html" role="menuitem">Home</a>
+        <a href="../unit-converter/index.html" role="menuitem">Unit Converter</a>
+        <a href="../currency-converter/index.html" role="menuitem">Currency</a>
+        <a href="../password-generator/index.html" role="menuitem">Password Gen</a>
+        <a href="../age-calculator/index.html" role="menuitem">Age Calc</a>
+        <a href="../readme-generator/index.html" role="menuitem">Readme Gen</a>
+        <a href="./index.html" class="active" role="menuitem">QR Code</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
+    <span class="sep" aria-hidden="true">›</span>
+    <span class="current">QR Code Generator</span>
+  </nav>
+
+  <!-- Main -->
+  <main id="main-content" class="container page-wrapper" role="main">
+
+    <!-- Header -->
+    <div class="header-section text-center">
+      <div class="icon-wrapper glass-panel">
+        <i class="fa-solid fa-qrcode" style="color: #06b6d4;" aria-hidden="true"></i>
+      </div>
+      <h1>QR Code <span class="text-gradient-cyan">Generator</span></h1>
+      <p>Generate beautiful, custom QR codes with logo overlays, color themes, and dot styles. Download instantly as PNG.</p>
+    </div>
+
+    <!-- Main Tool Layout -->
+    <div class="qr-layout">
+
+      <!-- Controls Panel -->
+      <div class="controls-panel glass-panel" role="form" aria-label="QR Code settings">
+
+        <!-- Content Input -->
+        <div class="section-group">
+          <h2 class="group-title"><i class="fa-solid fa-keyboard" aria-hidden="true"></i> Content</h2>
+          <div class="form-group">
+            <label for="qr-type">Type</label>
+            <div class="type-pills" id="qr-type" role="radiogroup" aria-label="QR code content type">
+              <button class="pill active" data-type="url" role="radio" aria-checked="true">URL</button>
+              <button class="pill" data-type="text" role="radio" aria-checked="false">Text</button>
+              <button class="pill" data-type="email" role="radio" aria-checked="false">Email</button>
+              <button class="pill" data-type="phone" role="radio" aria-checked="false">Phone</button>
+              <button class="pill" data-type="wifi" role="radio" aria-checked="false">WiFi</button>
+            </div>
+          </div>
+
+          <!-- Dynamic input area -->
+          <div id="input-area">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Style Settings -->
+        <div class="section-group">
+          <h2 class="group-title"><i class="fa-solid fa-palette" aria-hidden="true"></i> Style</h2>
+
+          <div class="style-row">
+            <div class="form-group">
+              <label for="dot-style">Dot Style</label>
+              <select id="dot-style" aria-label="QR dot style">
+                <option value="square">Square</option>
+                <option value="dots" selected>Dots (Rounded)</option>
+                <option value="rounded">Rounded Squares</option>
+                <option value="extra-rounded">Extra Rounded</option>
+                <option value="classy">Classy</option>
+                <option value="classy-rounded">Classy Rounded</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="corner-style">Corner Style</label>
+              <select id="corner-style" aria-label="QR corner style">
+                <option value="square">Square</option>
+                <option value="extra-rounded" selected>Rounded</option>
+                <option value="dot">Dot</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="color-row">
+            <div class="color-group">
+              <label for="dot-color">Dot Color</label>
+              <div class="color-input-wrap">
+                <input type="color" id="dot-color" value="#0f172a" aria-label="Dot color">
+                <span id="dot-color-hex">#0f172a</span>
+              </div>
+            </div>
+            <div class="color-group">
+              <label for="bg-color">Background</label>
+              <div class="color-input-wrap">
+                <input type="color" id="bg-color" value="#ffffff" aria-label="Background color">
+                <span id="bg-color-hex">#ffffff</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Size Slider -->
+          <div class="form-group">
+            <div class="slider-header">
+              <label for="size-slider">QR Size</label>
+              <span id="size-val" class="length-val" aria-live="polite">300 px</span>
+            </div>
+            <input type="range" id="size-slider" min="150" max="600" step="10" value="300" aria-label="QR code size" aria-valuemin="150" aria-valuemax="600">
+          </div>
+        </div>
+
+        <!-- Logo Upload -->
+        <div class="section-group">
+          <h2 class="group-title"><i class="fa-solid fa-image" aria-hidden="true"></i> Logo / Image <span class="optional-tag">optional</span></h2>
+          <div class="logo-upload-area" id="logo-drop-zone" role="button" tabindex="0" aria-label="Upload logo image">
+            <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+            <p>Drop an image here or <span>click to upload</span></p>
+            <p class="upload-hint">PNG, JPG, SVG • Max 2MB</p>
+            <input type="file" id="logo-upload" accept="image/*" aria-label="Choose logo file">
+          </div>
+          <div id="logo-preview-row" class="logo-preview-row" style="display: none;">
+            <img id="logo-preview-img" alt="Uploaded logo preview">
+            <div class="logo-meta">
+              <span id="logo-filename"></span>
+              <button id="remove-logo" class="remove-btn" aria-label="Remove logo"><i class="fa-solid fa-xmark" aria-hidden="true"></i> Remove</button>
+            </div>
+            <div class="form-group" style="margin-top: 0.75rem;">
+              <div class="slider-header">
+                <label for="logo-size">Logo Size</label>
+                <span id="logo-size-val" class="length-val" aria-live="polite">25%</span>
+              </div>
+              <input type="range" id="logo-size" min="10" max="40" value="25" aria-label="Logo size percentage">
+            </div>
+          </div>
+        </div>
+
+        <!-- Generate Button -->
+        <button id="generate-btn" class="btn btn-primary generate-qr-btn" aria-label="Generate QR code">
+          <i class="fa-solid fa-qrcode" aria-hidden="true"></i> Generate QR Code
+        </button>
+      </div>
+
+      <!-- Preview Panel -->
+      <div class="preview-panel glass-panel" role="region" aria-label="QR code preview">
+        <h2 class="preview-title"><i class="fa-solid fa-eye" aria-hidden="true"></i> Preview</h2>
+
+        <div class="qr-canvas-wrap" id="qr-canvas-wrap" aria-label="QR code output">
+          <!-- QR Code rendered here by JS -->
+          <div class="qr-placeholder" id="qr-placeholder">
+            <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
+            <p>Your QR code will appear here</p>
+          </div>
+        </div>
+
+        <div class="download-actions" id="download-actions" style="display:none;">
+          <button id="download-png" class="btn btn-primary download-btn" aria-label="Download as PNG">
+            <i class="fa-solid fa-download" aria-hidden="true"></i> PNG
+          </button>
+          <button id="download-svg" class="btn btn-ghost-cyan download-btn" aria-label="Download as SVG">
+            <i class="fa-solid fa-file-code" aria-hidden="true"></i> SVG
+          </button>
+          <button id="copy-svg" class="btn btn-ghost-cyan download-btn" aria-label="Copy SVG code">
+            <i class="fa-regular fa-copy" aria-hidden="true"></i> Copy SVG
+          </button>
+        </div>
+
+        <div class="qr-info" id="qr-info" style="display:none;" aria-live="polite">
+          <!-- Info chips populated by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" aria-live="assertive"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener noreferrer">Hasan Rizvee</a>. All rights reserved.</p>
+        <p class="footer-made"><i class="fa-solid fa-heart" aria-hidden="true"></i> Part of <a href="../index.html">Utilvault</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="../assets/js/nav.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

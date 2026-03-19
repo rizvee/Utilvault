@@ -1,0 +1,207 @@
+/* age-calculator/style.css */
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.header-section {
+  max-width: 600px;
+}
+
+.icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background: var(--glass-bg);
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.header-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.header-section p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Calculator Box */
+.calculator-box {
+  width: 100%;
+  max-width: 800px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* Input Area */
+.input-area {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-end;
+}
+
+.date-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.date-group label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.date-group input[type="date"] {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.date-group input[type="date"]:focus {
+  outline: none;
+  border-color: #ec4899;
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2);
+}
+
+/* Custom Calendar Icon color styling */
+::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.5);
+}
+
+[data-theme="dark"] ::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.btn-calc {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.btn-calc:hover {
+  box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+}
+
+/* Results Grid */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.result-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.result-card:hover {
+  transform: translateY(-5px);
+  border-color: #ec4899;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .result-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.result-val {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ec4899;
+}
+
+.result-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Countdown Section */
+.countdown-section {
+  text-align: center;
+  padding-top: 2.5rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+.countdown-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.bd-info {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.countdown-display span {
+  background: var(--bg-secondary);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  min-width: 70px;
+}
+
+@media (max-width: 768px) {
+  .input-area {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .countdown-display {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}

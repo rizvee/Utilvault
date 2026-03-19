@@ -1,0 +1,529 @@
+/* qr-generator/style.css */
+
+/* ── Cyan gradient for QR tool ── */
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Page Layout ── */
+.qr-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+  align-items: start;
+}
+
+/* ── Controls Panel ── */
+.controls-panel {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-group {
+  padding: 1.75rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-group:last-child {
+  border-bottom: none;
+}
+
+.group-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.group-title i { color: #06b6d4; }
+
+/* Form Groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-group:last-child { margin-bottom: 0; }
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group input[type="url"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group input[type="url"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Content Type Pills */
+.type-pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.pill:hover {
+  border-color: #06b6d4;
+  color: #06b6d4;
+}
+
+.pill.active {
+  background: #06b6d4;
+  border-color: #06b6d4;
+  color: white;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35);
+}
+
+/* Style Row */
+.style-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Color Row */
+.color-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.color-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.color-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.color-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  transition: var(--transition);
+}
+
+.color-input-wrap:focus-within {
+  border-color: #06b6d4;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+.color-input-wrap input[type="color"] {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+}
+
+.color-input-wrap span {
+  font-size: 0.85rem;
+  font-family: 'Courier New', monospace;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+/* Slider */
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.length-val {
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  color: #06b6d4;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--border-color);
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #06b6d4;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(6, 182, 212, 0.4);
+  transition: var(--transition);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Optional tag */
+.optional-tag {
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: rgba(6, 182, 212, 0.1);
+  color: #06b6d4;
+  border-radius: 100px;
+  padding: 0.15rem 0.6rem;
+  letter-spacing: 0;
+  text-transform: none;
+  border: 1px solid rgba(6, 182, 212, 0.25);
+}
+
+/* Logo Upload */
+.logo-upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: 12px;
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-upload-area:hover,
+.logo-upload-area.drag-over {
+  border-color: #06b6d4;
+  background: rgba(6, 182, 212, 0.04);
+}
+
+.logo-upload-area i {
+  font-size: 2rem;
+  color: var(--text-secondary);
+}
+
+.logo-upload-area p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.logo-upload-area span {
+  color: #06b6d4;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.upload-hint {
+  font-size: 0.75rem !important;
+  opacity: 0.6;
+}
+
+.logo-upload-area input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Logo Preview Row */
+.logo-preview-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.logo-preview-row img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  padding: 4px;
+}
+
+.logo-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.logo-meta span {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 180px;
+  white-space: nowrap;
+}
+
+.remove-btn {
+  background: rgb(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  border-radius: 8px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.8rem;
+  font-family: var(--font-main);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.remove-btn:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+/* Generate Button */
+.generate-qr-btn {
+  margin: 0 2rem 2rem;
+  width: calc(100% - 4rem);
+  font-size: 1.05rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  border: none;
+  border-radius: 12px;
+  gap: 0.5rem;
+}
+
+.generate-qr-btn:hover {
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ── Preview Panel ── */
+.preview-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  min-height: 500px;
+}
+
+.preview-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+}
+
+.preview-title i { color: #06b6d4; }
+
+/* QR Canvas Wrap */
+.qr-canvas-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 320px;
+}
+
+.qr-canvas-wrap canvas,
+.qr-canvas-wrap svg {
+  border-radius: 16px;
+  box-shadow: var(--shadow-lg);
+  max-width: 100%;
+}
+
+/* Placeholder */
+.qr-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--text-secondary);
+  opacity: 0.4;
+  text-align: center;
+}
+
+.qr-placeholder i {
+  font-size: 5rem;
+}
+
+.qr-placeholder p {
+  font-size: 1rem;
+}
+
+/* Download Buttons */
+.download-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.download-btn {
+  flex: 1;
+  min-width: 90px;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  gap: 0.4rem;
+}
+
+.btn-ghost-cyan {
+  background: transparent;
+  border: 1.5px solid rgba(6, 182, 212, 0.4);
+  color: #06b6d4;
+}
+
+.btn-ghost-cyan:hover {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: #06b6d4;
+  transform: translateY(-2px);
+}
+
+/* QR Info Chips */
+.qr-info {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.info-chip {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.info-chip i { color: #06b6d4; font-size: 0.75rem; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 0.85rem 2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .qr-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    order: -1; /* show preview above controls on mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .style-row,
+  .color-row { grid-template-columns: 1fr; }
+  .generate-qr-btn { margin: 0 1rem 1.5rem; width: calc(100% - 2rem); }
+}

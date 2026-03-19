@@ -1,0 +1,225 @@
+/* unit-converter/style.css */
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.header-section {
+  max-width: 600px;
+}
+
+.icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #3b82f6;
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.header-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.header-section p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Converter Box */
+.converter-box {
+  width: 100%;
+  max-width: 900px;
+  padding: 2.5rem;
+}
+
+/* Category Tabs */
+.category-tabs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  background: rgba(0,0,0,0.03);
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+
+[data-theme="dark"] .category-tabs {
+  background: rgba(255,255,255,0.03);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-btn i {
+  font-size: 1.25rem;
+}
+
+.tab-btn:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Conversion Workspace */
+.conversion-workspace {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.input-wrapper {
+  display: flex;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 1rem 1.25rem;
+  font-size: 1.25rem;
+  font-family: var(--font-main);
+  color: var(--text-primary);
+  width: 100%;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+}
+
+.input-wrapper input[readonly] {
+  background: rgba(0,0,0,0.02);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .input-wrapper input[readonly] {
+  background: rgba(255,255,255,0.02);
+}
+
+.input-wrapper select {
+  background: var(--bg-secondary);
+  border: none;
+  border-left: 1px solid var(--border-color);
+  padding: 0 1.5rem;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  min-width: 120px;
+  font-weight: 500;
+}
+
+.input-wrapper select:focus {
+  outline: none;
+}
+
+.swap-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 0.25rem; /* align with inputs visually */
+}
+
+.swap-btn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: rotate(180deg);
+}
+
+/* Formula display */
+.formula-display {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .conversion-workspace {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .swap-btn {
+    align-self: center;
+    margin: -1rem 0;
+    z-index: 10;
+    box-shadow: var(--shadow);
+  }
+
+  .category-tabs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .category-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

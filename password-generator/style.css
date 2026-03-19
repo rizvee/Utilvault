@@ -1,0 +1,283 @@
+/* password-generator/style.css */
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+
+.header-section {
+  max-width: 600px;
+}
+
+.icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background: var(--glass-bg);
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.header-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.header-section p {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Generator Box */
+.generator-box {
+  width: 100%;
+  max-width: 700px;
+  padding: 2.5rem;
+  position: relative;
+}
+
+/* Password Display */
+.password-display-wrapper {
+  display: flex;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.password-display {
+  flex: 1;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 1rem;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.copy-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-btn:hover {
+  background: var(--accent-hover);
+  transform: scale(1.05);
+}
+
+/* Strength Meter */
+.strength-meter {
+  height: 6px;
+  background: var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.strength-bar {
+  height: 100%;
+  width: 0%;
+  transition: all 0.5s ease;
+  background: var(--text-secondary);
+}
+
+.strength-text {
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+/* Controls Area */
+.controls-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Range Slider */
+.length-control {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.length-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.length-val {
+  background: var(--bg-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  color: var(--accent);
+  border: 1px solid var(--border-color);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--border-color);
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* Options Grid */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+  color: var(--text-primary);
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.checkbox-container:hover input~.checkmark {
+  border-color: var(--accent);
+}
+
+.checkbox-container input:checked~.checkmark {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.generate-btn {
+  width: 100%;
+  font-size: 1.125rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, var(--accent), #8b5cf6);
+  border: none;
+  gap: 0.5rem;
+}
+
+.generate-btn:hover {
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Toast */
+.toast {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -10px);
+}
+
+@media (max-width: 600px) {
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+}

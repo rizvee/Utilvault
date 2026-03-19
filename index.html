@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO -->
+  <title>Utilvault — Free Online Web Tools | Unit Converter, Currency Converter & More</title>
+  <meta name="description"
+    content="Utilvault is a free, all-in-one web tool suite featuring a Unit Converter (60+ units), Real-Time Currency Converter, Password Generator, Age Calculator, and Readme Generator. No sign-up, no ads, 100% free.">
+  <meta name="keywords"
+    content="unit converter, currency converter, password generator, age calculator, readme generator, free online tools, web utilities, utilvault">
+  <meta name="author" content="Hasan Rizvee">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rizvee.github.io/Utilvault/">
+  <meta property="og:title" content="Utilvault — Free Online Web Tools">
+  <meta property="og:description"
+    content="All-in-one free web utility suite: Unit Converter, Currency Converter, Password Generator, Age Calculator & Readme Generator. No registration required.">
+  <meta property="og:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Utilvault">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://rizvee.github.io/Utilvault/">
+  <meta name="twitter:title" content="Utilvault — Free Online Web Tools">
+  <meta name="twitter:description" content="All-in-one free web utility suite. No sign-up. No ads.">
+  <meta name="twitter:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+  <meta name="twitter:creator" content="@hasanrizvee">
+
+  <!-- Theme Color for browsers -->
+  <meta name="theme-color" content="#3b82f6">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./assets/css/global.css">
+  <link rel="stylesheet" href="./home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- JSON-LD: WebSite + Person + ItemList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://rizvee.github.io/Utilvault/#website",
+        "url": "https://rizvee.github.io/Utilvault/",
+        "name": "Utilvault",
+        "description": "Free all-in-one web utility suite with Unit Converter, Currency Converter, Password Generator, Age Calculator, and Readme Generator.",
+        "author": { "@id": "https://rizvee.github.io/#person" },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://rizvee.github.io/#person",
+        "name": "Hasan Rizvee",
+        "url": "https://rizvee.github.io",
+        "sameAs": [
+          "https://github.com/rizvee",
+          "https://linkedin.com/in/hasanrizvee",
+          "https://rizvee.github.io"
+        ]
+      },
+      {
+        "@type": "ItemList",
+        "name": "Utilvault Web Tools",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Unit Converter",     "url": "https://rizvee.github.io/Utilvault/unit-converter/" },
+          { "@type": "ListItem", "position": 2, "name": "Currency Converter", "url": "https://rizvee.github.io/Utilvault/currency-converter/" },
+          { "@type": "ListItem", "position": 3, "name": "Password Generator", "url": "https://rizvee.github.io/Utilvault/password-generator/" },
+          { "@type": "ListItem", "position": 4, "name": "Age Calculator",     "url": "https://rizvee.github.io/Utilvault/age-calculator/" },
+          { "@type": "ListItem", "position": 5, "name": "Readme Generator",   "url": "https://rizvee.github.io/Utilvault/readme-generator/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- ── Navigation ── -->
+  <header role="banner">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="./index.html" class="logo" aria-label="Utilvault home">
+        <i class="fa-solid fa-vault" aria-hidden="true"></i> Util<span>vault</span>
+      </a>
+
+      <div class="nav-links" id="nav-links" role="menubar">
+        <a href="./index.html" class="active" role="menuitem">Home</a>
+        <a href="./unit-converter/index.html" role="menuitem">Unit Converter</a>
+        <a href="./currency-converter/index.html" role="menuitem">Currency</a>
+        <a href="./password-generator/index.html" role="menuitem">Password Gen</a>
+        <a href="./age-calculator/index.html" role="menuitem">Age Calc</a>
+        <a href="./readme-generator/index.html" role="menuitem">Readme Gen</a>
+        <a href="./qr-generator/index.html" role="menuitem">QR Code</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── Main ── -->
+  <main id="main-content" class="container" role="main">
+
+    <!-- Hero -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i> Fast · Free · Private · No Sign-up
+        </div>
+        <h1 class="hero-title" id="hero-title">
+          Your Ultimate<br><span class="text-gradient">Web Tool Hub</span>
+        </h1>
+        <p class="hero-subtitle">
+          A beautifully crafted collection of everyday utilities. Convert units, track live currency rates, generate
+          strong passwords, calculate your age, and build README files — all for free, right in your browser.
+        </p>
+        <div class="hero-cta">
+          <a href="#tools" class="btn btn-primary btn-large">
+            <i class="fa-solid fa-grid-2" aria-hidden="true"></i> Explore Tools
+          </a>
+          <a href="https://github.com/rizvee/Utilvault" target="_blank" rel="noopener noreferrer"
+            class="btn btn-ghost btn-large">
+            <i class="fa-brands fa-github" aria-hidden="true"></i> Star on GitHub
+          </a>
+        </div>
+        <div class="hero-stats" aria-label="Tool statistics">
+          <div class="stat"><strong>6</strong> <span>Tools</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><strong>60+</strong> <span>Units</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><strong>35+</strong> <span>Currencies</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><strong>100%</strong> <span>Free</span></div>
+        </div>
+      </div>
+      <!-- Background Glows -->
+      <div class="glow-orb orb-1" aria-hidden="true"></div>
+      <div class="glow-orb orb-2" aria-hidden="true"></div>
+      <div class="glow-orb orb-3" aria-hidden="true"></div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section id="tools" class="tools-section" aria-labelledby="tools-title">
+      <div class="section-header">
+        <h2 id="tools-title">Available Utilities</h2>
+        <p>All tools run entirely in your browser. No data is ever sent to a server.</p>
+      </div>
+
+      <div class="tools-grid" role="list">
+
+        <!-- Unit Converter -->
+        <a href="./unit-converter/index.html" class="tool-card" role="listitem" aria-label="Open Unit Converter">
+          <div class="card-icon-wrap" style="--card-color: #3b82f6; --card-color-rgb: 59,130,246;">
+            <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+          </div>
+          <div class="card-body">
+            <h3>Unit Converter</h3>
+            <p>Convert between 60+ units across 8 categories including length, weight, temperature, data, speed, and
+              more.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-tag">8 Categories</span>
+            <span class="card-tag">60+ Units</span>
+            <i class="fa-solid fa-arrow-right card-arrow" aria-hidden="true"></i>
+          </div>
+        </a>
+
+        <!-- Currency Converter -->
+        <a href="./currency-converter/index.html" class="tool-card" role="listitem"
+          aria-label="Open Currency Converter">
+          <div class="card-icon-wrap" style="--card-color: #f59e0b; --card-color-rgb: 245,158,11;">
+            <i class="fa-solid fa-coins" aria-hidden="true"></i>
+          </div>
+          <div class="card-body">
+            <h3>Currency Converter</h3>
+            <p>Real-time exchange rates for 35+ world currencies. Defaults to BDT. Auto-refreshes every 60 seconds.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-tag">Live Rates</span>
+            <span class="card-tag">35+ Currencies</span>
+            <i class="fa-solid fa-arrow-right card-arrow" aria-hidden="true"></i>
+          </div>
+        </a>
+
+        <!-- Password Generator -->
+        <a href="./password-generator/index.html" class="tool-card" role="listitem"
+          aria-label="Open Password Generator">
+          <div class="card-icon-wrap" style="--card-color: #8b5cf6; --card-color-rgb: 139,92,246;">
+            <i class="fa-solid fa-key" aria-hidden="true"></i>
+          </div>
+          <div class="card-body">
+            <h3>Password Generator</h3>
+            <p>Generate cryptographically secure passwords using the Web Crypto API. Supports custom length and
+              character sets.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-tag">Crypto-Secure</span>
+            <span class="card-tag">Customizable</span>
+            <i class="fa-solid fa-arrow-right card-arrow" aria-hidden="true"></i>
+          </div>
+        </a>
+
+        <!-- Age Calculator -->
+        <a href="./age-calculator/index.html" class="tool-card" role="listitem" aria-label="Open Age Calculator">
+          <div class="card-icon-wrap" style="--card-color: #ec4899; --card-color-rgb: 236,72,153;">
+            <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
+          </div>
+          <div class="card-body">
+            <h3>Age Calculator</h3>
+            <p>Find your exact age down to years, months, days, and hours. Includes a live countdown to your next
+              birthday.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-tag">Exact Age</span>
+            <span class="card-tag">Birthday Countdown</span>
+            <i class="fa-solid fa-arrow-right card-arrow" aria-hidden="true"></i>
+          </div>
+        </a>
+
+        <!-- Readme Generator -->
+        <a href="./readme-generator/index.html" class="tool-card" role="listitem" aria-label="Open Readme Generator">
+          <div class="card-icon-wrap" style="--card-color: #10b981; --card-color-rgb: 16,185,129;">
+            <i class="fa-brands fa-markdown" aria-hidden="true"></i>
+          </div>
+          <div class="card-body">
+            <h3>Readme Generator</h3>
+            <p>Visually compose your project's README.md with a live split-pane Markdown preview and one-click copy.</p>
+          </div>
+          <div class="card-footer">
+            <span class="card-tag">Live Preview</span>
+            <span class="card-tag">Markdown</span>
+            <i class="fa-solid fa-arrow-right card-arrow" aria-hidden="true"></i>
+          </div>
+        </a>
+
+        <!-- QR Code Generator -->
+        <a href="./qr-generator/index.html" class="tool-card" role="listitem" aria-label="Open QR Code Generator">
+          <div class="card-icon-wrap" style="--card-color: #06b6d4; --card-color-rgb: 6,182,212;">
+            <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
+          </div>
+          <div class="card-body">
+            <h3>QR Code Generator</h3>
+            <p>Generate custom QR codes with logo overlays, color themes, and 5 content types. Download as PNG or SVG.
+            </p>
+          </div>
+          <div class="card-footer">
+            <span class="card-tag">Logo Support</span>
+            <span class="card-tag">PNG & SVG</span>
+            <i class="fa-solid fa-arrow-right card-arrow" aria-hidden="true"></i>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Why Utilvault -->
+    <section class="why-section" aria-labelledby="why-title">
+      <div class="why-grid">
+        <div class="why-card">
+          <i class="fa-solid fa-lock-open" aria-hidden="true"></i>
+          <h3>100% Free</h3>
+          <p>No hidden fees, no premium tiers. Every tool is permanently free to use.</p>
+        </div>
+        <div class="why-card">
+          <i class="fa-solid fa-user-secret" aria-hidden="true"></i>
+          <h3>Privacy First</h3>
+          <p>All computations happen in your browser. We never collect or transmit your data.</p>
+        </div>
+        <div class="why-card">
+          <i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>
+          <h3>Fully Responsive</h3>
+          <p>Works flawlessly on desktop, tablet, and mobile, with dark and light modes.</p>
+        </div>
+        <div class="why-card">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          <h3>Lightning Fast</h3>
+          <p>Pure HTML, CSS and Vanilla JS. No frameworks, no bloat, just instant load times.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <a href="./index.html" class="logo" aria-label="Utilvault home">
+            <i class="fa-solid fa-vault" aria-hidden="true"></i> Util<span>vault</span>
+          </a>
+          <p>A beautifully crafted, free web tool suite. Built with precision and care for developers, students, and
+            everyday users.</p>
+          <div class="footer-social" aria-label="Author social links">
+            <a href="https://github.com/rizvee" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="GitHub profile of Hasan Rizvee" title="GitHub">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+            <a href="https://linkedin.com/in/hasanrizvee" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="LinkedIn profile of Hasan Rizvee" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+            <a href="https://rizvee.github.io" target="_blank" rel="noopener noreferrer" class="social-link"
+              aria-label="Portfolio of Hasan Rizvee" title="Portfolio">
+              <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <ul>
+            <li><a href="./unit-converter/index.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Unit
+                Converter</a></li>
+            <li><a href="./currency-converter/index.html"><i class="fa-solid fa-coins" aria-hidden="true"></i> Currency
+                Converter</a></li>
+            <li><a href="./password-generator/index.html"><i class="fa-solid fa-key" aria-hidden="true"></i> Password
+                Generator</a></li>
+            <li><a href="./age-calculator/index.html"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> Age
+                Calculator</a></li>
+            <li><a href="./readme-generator/index.html"><i class="fa-brands fa-markdown" aria-hidden="true"></i> Readme
+                Generator</a></li>
+            <li><a href="./qr-generator/index.html"><i class="fa-brands fa-qrcode aria-hidden=" true"></i> QR
+                Generator</a></li>
+          </ul>
+        </div>
+
+        <!-- Author -->
+        <div class="footer-col">
+          <h4>Author</h4>
+          <ul>
+            <li><a href="https://rizvee.github.io" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-user"
+                  aria-hidden="true"></i> Hasan Rizvee</a></li>
+            <li><a href="https://github.com/rizvee" target="_blank" rel="noopener noreferrer"><i
+                  class="fa-brands fa-github" aria-hidden="true"></i> github.com/rizvee</a></li>
+            <li><a href="https://linkedin.com/in/hasanrizvee" target="_blank" rel="noopener noreferrer"><i
+                  class="fa-brands fa-linkedin" aria-hidden="true"></i> hasanrizvee</a></li>
+            <li><a href="https://github.com/rizvee/Utilvault" target="_blank" rel="noopener noreferrer"><i
+                  class="fa-solid fa-code-branch" aria-hidden="true"></i> Source Code</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener noreferrer">Hasan Rizvee</a>.
+          All rights reserved.</p>
+        <p class="footer-made"><i class="fa-solid fa-heart" aria-hidden="true"></i> Crafted with precision</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" aria-label="Scroll back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="./assets/js/nav.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO -->
+  <title>Currency Converter — Live Exchange Rates, BDT & More | Utilvault</title>
+  <meta name="description" content="Free real-time currency converter with live exchange rates for 35+ currencies including BDT (Bangladeshi Taka), USD, EUR, GBP, JPY, INR and more. Auto-refreshes every 60 seconds.">
+  <meta name="keywords" content="currency converter, BDT converter, live exchange rates, bangladeshi taka, USD to BDT, EUR to BDT, free currency converter, online currency exchange">
+  <meta name="author" content="Hasan Rizvee">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/currency-converter/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rizvee.github.io/Utilvault/currency-converter/">
+  <meta property="og:title" content="Currency Converter — Live Exchange Rates | Utilvault">
+  <meta property="og:description" content="Free real-time currency converter. Live rates for 35+ currencies including BDT. Auto-refreshes every 60 seconds.">
+  <meta property="og:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+  <meta property="og:site_name" content="Utilvault">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Currency Converter — Live Rates (USD→BDT) | Utilvault">
+  <meta name="twitter:description" content="Live exchange rates for 35+ currencies. Free. Auto-refreshes every minute.">
+  <meta name="twitter:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+
+  <meta name="theme-color" content="#f59e0b">
+
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Currency Converter",
+        "url": "https://rizvee.github.io/Utilvault/currency-converter/",
+        "description": "Real-time currency converter with live exchange rates for 35+ currencies including BDT.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Person", "name": "Hasan Rizvee", "url": "https://rizvee.github.io" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",               "item": "https://rizvee.github.io/Utilvault/" },
+          { "@type": "ListItem", "position": 2, "name": "Currency Converter", "item": "https://rizvee.github.io/Utilvault/currency-converter/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header role="banner">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="../index.html" class="logo"><i class="fa-solid fa-vault" aria-hidden="true"></i> Util<span>vault</span></a>
+      <div class="nav-links" id="nav-links" role="menubar">
+        <a href="../index.html" role="menuitem">Home</a>
+        <a href="../unit-converter/index.html" role="menuitem">Unit Converter</a>
+        <a href="./index.html" class="active" role="menuitem">Currency</a>
+        <a href="../password-generator/index.html" role="menuitem">Password Gen</a>
+        <a href="../age-calculator/index.html" role="menuitem">Age Calc</a>
+        <a href="../readme-generator/index.html" role="menuitem">Readme Gen</a>
+        <a href="../qr-generator/index.html" role="menuitem">QR Code</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
+    <span class="sep" aria-hidden="true">›</span>
+    <span class="current">Currency Converter</span>
+  </nav>
+
+  <main id="main-content" class="container page-wrapper" role="main">
+    <div class="header-section text-center">
+      <div class="icon-wrapper glass-panel">
+        <i class="fa-solid fa-coins" style="color: #f59e0b;" aria-hidden="true"></i>
+      </div>
+      <h1>Real-Time <span class="text-gradient-gold">Currency Converter</span></h1>
+      <p>Live exchange rates powered by the Open Exchange Rates API. Updated daily from global markets.</p>
+      <div class="rate-update-badge" id="rate-update-badge" aria-live="polite">
+        <i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> Fetching live rates...
+      </div>
+    </div>
+
+    <div class="converter-box glass-panel">
+      <div class="conversion-workspace">
+        <div class="currency-input-group">
+          <label for="from-amount">Amount</label>
+          <div class="currency-input-wrapper">
+            <select id="from-currency" aria-label="From currency"></select>
+            <input type="number" id="from-amount" placeholder="0.00" value="1" min="0" aria-label="Amount to convert">
+          </div>
+        </div>
+        <button id="swap-btn" class="swap-btn" aria-label="Swap currencies"><i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+        <div class="currency-input-group">
+          <label for="to-amount">Converted</label>
+          <div class="currency-input-wrapper">
+            <select id="to-currency" aria-label="To currency"></select>
+            <input type="number" id="to-amount" placeholder="0.00" readonly aria-label="Converted result">
+          </div>
+        </div>
+      </div>
+      <div class="rate-card" id="rate-card">
+        <div class="rate-info" id="rate-label" aria-live="polite">--</div>
+        <button id="copy-rate-btn" class="copy-rate-btn" title="Copy result" aria-label="Copy converted amount"><i class="fa-regular fa-copy" aria-hidden="true"></i></button>
+      </div>
+    </div>
+
+    <div class="popular-section">
+      <h2 class="section-label">Popular Pairs <span>vs USD</span></h2>
+      <div class="popular-grid" id="popular-grid" aria-label="Popular currency pairs"></div>
+    </div>
+    <div id="toast" class="toast" aria-live="assertive"></div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener noreferrer">Hasan Rizvee</a>. All rights reserved.</p>
+        <p class="footer-made"><i class="fa-solid fa-heart" aria-hidden="true"></i> Part of <a href="../index.html">Utilvault</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+
+  <script src="../assets/js/nav.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

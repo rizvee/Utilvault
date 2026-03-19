@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO -->
+  <title>Unit Converter — 60+ Units, 8 Categories | Utilvault</title>
+  <meta name="description" content="Free online unit converter with 60+ units across 8 categories: length, weight, temperature, area, volume, time, data, and speed. Instant real-time conversion. No sign-up required.">
+  <meta name="keywords" content="unit converter, length converter, weight converter, temperature converter, area converter, volume converter, time converter, data converter, speed converter, free online converter">
+  <meta name="author" content="Hasan Rizvee">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/unit-converter/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rizvee.github.io/Utilvault/unit-converter/">
+  <meta property="og:title" content="Unit Converter — 60+ Units, 8 Categories | Utilvault">
+  <meta property="og:description" content="Free real-time unit converter. Convert length, weight, temperature, area, volume, time, data, and speed instantly.">
+  <meta property="og:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+  <meta property="og:site_name" content="Utilvault">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Unit Converter — 60+ Units | Utilvault">
+  <meta name="twitter:description" content="Free real-time unit converter: length, weight, temperature, area, volume, time, data & speed.">
+  <meta name="twitter:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+
+  <meta name="theme-color" content="#3b82f6">
+
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- JSON-LD: WebApplication + BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Unit Converter",
+        "url": "https://rizvee.github.io/Utilvault/unit-converter/",
+        "description": "Free online unit converter with 60+ units across 8 categories.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": {
+          "@type": "Person",
+          "name": "Hasan Rizvee",
+          "url": "https://rizvee.github.io",
+          "sameAs": ["https://github.com/rizvee", "https://linkedin.com/in/hasanrizvee"]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",           "item": "https://rizvee.github.io/Utilvault/" },
+          { "@type": "ListItem", "position": 2, "name": "Unit Converter", "item": "https://rizvee.github.io/Utilvault/unit-converter/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <header role="banner">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="../index.html" class="logo" aria-label="Utilvault home">
+        <i class="fa-solid fa-vault" aria-hidden="true"></i> Util<span>vault</span>
+      </a>
+      <div class="nav-links" id="nav-links" role="menubar">
+        <a href="../index.html" role="menuitem">Home</a>
+        <a href="./index.html" class="active" role="menuitem">Unit Converter</a>
+        <a href="../currency-converter/index.html" role="menuitem">Currency</a>
+        <a href="../password-generator/index.html" role="menuitem">Password Gen</a>
+        <a href="../age-calculator/index.html" role="menuitem">Age Calc</a>
+        <a href="../readme-generator/index.html" role="menuitem">Readme Gen</a>
+        <a href="../qr-generator/index.html" role="menuitem">QR Code</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
+    <span class="sep" aria-hidden="true">›</span>
+    <span class="current">Unit Converter</span>
+  </nav>
+
+  <main id="main-content" class="container page-wrapper" role="main">
+    <div class="header-section text-center">
+      <div class="icon-wrapper glass-panel">
+        <i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+      </div>
+      <h1>Unit <span class="text-gradient">Converter</span></h1>
+      <p>Convert between 60+ units across 8 categories with real-time accuracy.</p>
+    </div>
+
+    <div class="converter-box glass-panel">
+      <div class="category-tabs" id="category-tabs" role="tablist" aria-label="Unit categories">
+        <button class="tab-btn active" data-category="length" role="tab" aria-selected="true"><i class="fa-solid fa-ruler" aria-hidden="true"></i> Length</button>
+        <button class="tab-btn" data-category="weight" role="tab" aria-selected="false"><i class="fa-solid fa-weight-scale" aria-hidden="true"></i> Weight</button>
+        <button class="tab-btn" data-category="temperature" role="tab" aria-selected="false"><i class="fa-solid fa-temperature-half" aria-hidden="true"></i> Temp</button>
+        <button class="tab-btn" data-category="area" role="tab" aria-selected="false"><i class="fa-solid fa-chart-area" aria-hidden="true"></i> Area</button>
+        <button class="tab-btn" data-category="volume" role="tab" aria-selected="false"><i class="fa-solid fa-cube" aria-hidden="true"></i> Volume</button>
+        <button class="tab-btn" data-category="time" role="tab" aria-selected="false"><i class="fa-regular fa-clock" aria-hidden="true"></i> Time</button>
+        <button class="tab-btn" data-category="data" role="tab" aria-selected="false"><i class="fa-solid fa-database" aria-hidden="true"></i> Data</button>
+        <button class="tab-btn" data-category="speed" role="tab" aria-selected="false"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i> Speed</button>
+      </div>
+
+      <div class="conversion-workspace">
+        <div class="input-group">
+          <label for="from-value">From</label>
+          <div class="input-wrapper">
+            <input type="number" id="from-value" placeholder="Enter value..." value="1" aria-label="Input value to convert">
+            <select id="from-unit" aria-label="Select source unit"></select>
+          </div>
+        </div>
+        <button id="swap-btn" class="swap-btn" aria-label="Swap units"><i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i></button>
+        <div class="input-group">
+          <label for="to-value">To</label>
+          <div class="input-wrapper">
+            <input type="number" id="to-value" placeholder="Result..." readonly aria-label="Conversion result">
+            <select id="to-unit" aria-label="Select target unit"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="formula-display" id="formula-display" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener noreferrer">Hasan Rizvee</a>. All rights reserved.</p>
+        <p class="footer-made"><i class="fa-solid fa-heart" aria-hidden="true"></i> Part of <a href="../index.html">Utilvault</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+
+  <script src="../assets/js/nav.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
