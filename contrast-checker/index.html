@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WCAG Contrast Checker â€” Color Accessibility Tester | Utilvault</title>
+  <meta name="description" content="Check text and background color contrast ratios against WCAG AA and AAA accessibility standards. Free, instant results, no sign-up.">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/contrast-checker/">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .cc-preview{min-height:120px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:1.25rem 0;transition:background 0.2s, color 0.2s;}
+    .cc-preview-text{font-size:1.4rem;font-weight:700;text-align:center;}
+    .cc-ratio{font-size:3rem;font-weight:900;text-align:center;margin:0.5rem 0;}
+    .wcag-checks{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;margin-top:1rem;}
+    .wcag-item{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:10px;padding:0.85rem;text-align:center;}
+    .wcag-item .wi-label{font-size:0.75rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em;}
+    .wcag-item .wi-result{font-size:1rem;font-weight:800;margin-top:0.3rem;}
+    .pass{color:#10b981;}.fail{color:#ef4444;}
+    .wcag-item.pass-bg{border-color:#10b981;background:rgba(16,185,129,0.06);}
+    .wcag-item.fail-bg{border-color:#ef4444;background:rgba(239,68,68,0.06);}
+    @media(max-width:540px){.wcag-checks{grid-template-columns:1fr 1fr;}}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links"><a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div></div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Contrast Checker</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-circle-half-stroke" style="color:#3b82f6;"></i></div>
+    <h1>WCAG Contrast <span class="text-gradient">Checker</span></h1>
+    <p>Test text and background color contrast for WCAG AA &amp; AAA accessibility compliance.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-eye" style="color:#3b82f6;"></i> Color Settings</h2></div>
+    <div class="tool-body">
+      <div class="form-row cols-2">
+        <div class="form-group"><label for="cc-fg">Text Color</label><input type="color" id="cc-fg" value="#1a1a1a"><input type="text" id="cc-fg-hex" value="#1a1a1a" placeholder="#000000" maxlength="7" style="margin-top:0.4rem;"></div>
+        <div class="form-group"><label for="cc-bg">Background Color</label><input type="color" id="cc-bg" value="#ffffff"><input type="text" id="cc-bg-hex" value="#ffffff" placeholder="#ffffff" maxlength="7" style="margin-top:0.4rem;"></div>
+      </div>
+      <div class="cc-preview" id="cc-preview">
+        <div class="cc-preview-text">Sample Text â€” The quick brown fox jumps over the lazy dog.</div>
+      </div>
+      <div class="cc-ratio" id="cc-ratio">â€”</div>
+      <p style="text-align:center;font-size:0.82rem;color:var(--text-secondary);">Contrast Ratio</p>
+      <div class="wcag-checks">
+        <div class="wcag-item" id="wc-aa-normal"><div class="wi-label">AA Normal</div><div class="wi-result" id="wc-aa-n-r">â€”</div><div style="font-size:0.72rem;color:var(--text-secondary);margin-top:0.2rem;">â‰¥ 4.5:1</div></div>
+        <div class="wcag-item" id="wc-aa-large"><div class="wi-label">AA Large</div><div class="wi-result" id="wc-aa-l-r">â€”</div><div style="font-size:0.72rem;color:var(--text-secondary);margin-top:0.2rem;">â‰¥ 3:1</div></div>
+        <div class="wcag-item" id="wc-aaa-normal"><div class="wi-label">AAA Normal</div><div class="wi-result" id="wc-aaa-n-r">â€”</div><div style="font-size:0.72rem;color:var(--text-secondary);margin-top:0.2rem;">â‰¥ 7:1</div></div>
+        <div class="wcag-item" id="wc-aaa-large"><div class="wi-label">AAA Large</div><div class="wi-result" id="wc-aaa-l-r">â€”</div><div style="font-size:0.72rem;color:var(--text-secondary);margin-top:0.2rem;">â‰¥ 4.5:1</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

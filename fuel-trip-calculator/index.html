@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Trip Cost Calculator â€” Road Trip Fuel Estimator | Utilvault</title>
+  <meta name="description" content="Estimate your road trip fuel cost based on distance, fuel price, and vehicle fuel efficiency. Supports km/l and mpg. Free, no sign-up.">
+  <meta name="keywords" content="fuel cost calculator, trip cost estimator, road trip calculator, fuel efficiency, mpg calculator, km per litre">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/fuel-trip-calculator/">
+  <meta name="theme-color" content="#f59e0b">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .fuel-results{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.25rem;}
+    .fuel-stat{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:12px;padding:1.1rem 1.25rem;}
+    .fuel-stat .fs-label{font-size:0.8rem;font-weight:600;color:var(--text-secondary);}
+    .fuel-stat .fs-val{font-size:1.6rem;font-weight:800;color:var(--text-primary);margin-top:0.2rem;}
+    @media(max-width:520px){.fuel-results{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-house"></i> Life &amp; Home <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../kitchen-unit-converter/index.html"><i class="fa-solid fa-utensils"></i> Kitchen Converter</a>
+      <a href="../date-duration-calculator/index.html"><i class="fa-solid fa-calendar-days"></i> Date Duration</a>
+      <a href="../cooking-timer/index.html"><i class="fa-solid fa-stopwatch"></i> Cooking Timer</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-gas-pump"></i> Fuel Trip Cost</a>
+      <a href="../random-choice-generator/index.html"><i class="fa-solid fa-shuffle"></i> Random Choice</a>
+      <a href="../unit-price-comparator/index.html"><i class="fa-solid fa-tags"></i> Unit Price Compare</a>
+      <a href="../world-clock/index.html"><i class="fa-solid fa-earth-americas"></i> World Clock</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Fuel Trip Calculator</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-gas-pump" style="color:#f59e0b;"></i></div>
+    <h1>Fuel Trip <span class="text-gradient">Cost Calculator</span></h1>
+    <p>Estimate your road trip fuel costs from distance, fuel price, and vehicle efficiency.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-gas-pump" style="color:#f59e0b;"></i> Trip Details</h2></div>
+    <div class="tool-body">
+      <div class="form-row cols-2">
+        <div class="form-group">
+          <label for="f-dist">Distance</label>
+          <input type="number" id="f-dist" value="100" min="0" step="any" placeholder="e.g. 300">
+        </div>
+        <div class="form-group">
+          <label for="f-dist-unit">Distance Unit</label>
+          <select id="f-dist-unit"><option value="km">Kilometres (km)</option><option value="mi">Miles (mi)</option></select>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group">
+          <label for="f-efficiency">Fuel Efficiency</label>
+          <input type="number" id="f-efficiency" value="12" min="0.1" step="any" placeholder="e.g. 12">
+        </div>
+        <div class="form-group">
+          <label for="f-eff-unit">Efficiency Unit</label>
+          <select id="f-eff-unit"><option value="kml">km/L (km per litre)</option><option value="mpg">MPG (miles per gallon)</option><option value="l100">L/100km</option></select>
+        </div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group">
+          <label for="f-price">Fuel Price per Litre/Gallon</label>
+          <input type="number" id="f-price" value="1.5" min="0" step="any" placeholder="e.g. 1.50">
+        </div>
+        <div class="form-group">
+          <label for="f-currency">Currency Symbol</label>
+          <input type="text" id="f-currency" value="$" maxlength="3" placeholder="$">
+        </div>
+      </div>
+      <div id="f-results" class="fuel-results" style="display:none;">
+        <div class="fuel-stat"><div class="fs-label">Fuel Needed</div><div class="fs-val" id="f-fuel">â€”</div></div>
+        <div class="fuel-stat"><div class="fs-label">Estimated Cost</div><div class="fs-val" id="f-cost">â€”</div></div>
+        <div class="fuel-stat"><div class="fs-label">Cost per 100km</div><div class="fs-val" id="f-per100">â€”</div></div>
+        <div class="fuel-stat"><div class="fs-label">Total Distance</div><div class="fs-val" id="f-dist-out">â€”</div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

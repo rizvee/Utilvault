@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Dish Cooking Timer â€” 4 Independent Timers | Utilvault</title>
+  <meta name="description" content="Run up to 4 independent countdown timers simultaneously. Perfect for cooking multi-course meals. Audio alert when each timer finishes. Free, no sign-up.">
+  <meta name="keywords" content="cooking timer, multi timer, kitchen timer, countdown timer, cooking countdown, multiple timers">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/cooking-timer/">
+  <meta name="theme-color" content="#f59e0b">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .timers-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;width:100%;}
+    .timer-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;}
+    .timer-name{font-weight:700;font-size:0.85rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;}
+    .timer-display{font-size:2.5rem;font-weight:800;letter-spacing:0.05em;text-align:center;color:var(--text-primary);font-variant-numeric:tabular-nums;}
+    .timer-display.running{color:#f59e0b;}
+    .timer-display.done{color:#10b981;}
+    .timer-inputs{display:flex;gap:0.5rem;align-items:center;}
+    .timer-inputs input{width:100%;padding:0.5rem;text-align:center;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:8px;font-family:var(--font-main);font-size:1rem;color:var(--text-primary);}
+    .timer-sep{font-weight:700;color:var(--text-secondary);}
+    .timer-btns{display:flex;gap:0.5rem;}
+    .timer-btns button{flex:1;padding:0.6rem;border:none;border-radius:8px;font-family:var(--font-main);font-weight:700;font-size:0.85rem;cursor:pointer;transition:var(--transition);}
+    .btn-start{background:#f59e0b;color:white;}
+    .btn-start:hover{background:#d97706;}
+    .btn-reset{background:var(--bg-primary);border:1px solid var(--border-color) !important;color:var(--text-secondary);}
+    .btn-reset:hover{background:var(--bg-secondary);}
+    .timer-label input{width:100%;background:transparent;border:none;outline:none;font-family:var(--font-main);font-size:0.85rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;}
+    @media(max-width:660px){.timers-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-house"></i> Life &amp; Home <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../kitchen-unit-converter/index.html"><i class="fa-solid fa-utensils"></i> Kitchen Converter</a>
+      <a href="../date-duration-calculator/index.html"><i class="fa-solid fa-calendar-days"></i> Date Duration</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-stopwatch"></i> Cooking Timer</a>
+      <a href="../fuel-trip-calculator/index.html"><i class="fa-solid fa-gas-pump"></i> Fuel Trip Cost</a>
+      <a href="../random-choice-generator/index.html"><i class="fa-solid fa-shuffle"></i> Random Choice</a>
+      <a href="../unit-price-comparator/index.html"><i class="fa-solid fa-tags"></i> Unit Price Compare</a>
+      <a href="../world-clock/index.html"><i class="fa-solid fa-earth-americas"></i> World Clock</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Cooking Timer</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main" style="max-width:900px;">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-stopwatch" style="color:#f59e0b;"></i></div>
+    <h1>Multi-Dish <span class="text-gradient">Cooking Timer</span></h1>
+    <p>Run up to 4 independent timers simultaneously for complex multi-course meals.</p>
+  </div>
+  <div class="timers-grid" id="timers-grid"></div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

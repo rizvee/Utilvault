@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ideal Sleep Calculator â€” Wake Up Refreshed | Utilvault</title>
+  <meta name="description" content="Calculate the best times to wake up based on 90-minute sleep cycles. Never wake up mid-REM again. Free, no sign-up.">
+  <meta name="keywords" content="sleep calculator, sleep cycle calculator, wake up time, rem sleep, best time to wake up, sleep cycles">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/sleep-calculator/">
+  <meta name="theme-color" content="#10b981">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .wake-times{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.85rem;margin-top:1.25rem;}
+    .wake-card{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:12px;padding:1rem;text-align:center;cursor:pointer;transition:var(--transition);}
+    .wake-card:hover{border-color:#10b981;background:rgba(16,185,129,0.06);}
+    .wake-card.best{border-color:#10b981;background:rgba(16,185,129,0.1);}
+    .wake-time{font-size:1.4rem;font-weight:800;color:var(--text-primary);}
+    .wake-cycles{font-size:0.78rem;color:var(--text-secondary);margin-top:0.2rem;}
+    .wake-label{font-size:0.7rem;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:0.05em;margin-top:0.2rem;}
+    .mode-toggle{display:flex;gap:0.5rem;margin-bottom:1.25rem;}
+    .mode-btn{flex:1;padding:0.6rem;border:1px solid var(--border-color);background:var(--bg-primary);border-radius:8px;cursor:pointer;font-family:var(--font-main);font-weight:600;font-size:0.9rem;color:var(--text-secondary);transition:var(--transition);}
+    .mode-btn.active{background:#10b981;color:white;border-color:#10b981;}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-heart-pulse"></i> Health <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../bmi-calculator/index.html"><i class="fa-solid fa-weight-scale"></i> BMI Calculator</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-moon"></i> Sleep Calculator</a>
+      <a href="../water-tracker/index.html"><i class="fa-solid fa-droplet"></i> Water Tracker</a>
+      <a href="../breath-pacer/index.html"><i class="fa-solid fa-wind"></i> Breath Pacer</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Sleep Calculator</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-moon" style="color:#10b981;"></i></div>
+    <h1>Ideal Sleep <span class="text-gradient">Calculator</span></h1>
+    <p>Get optimal wake-up (or bedtime) suggestions based on 90-minute sleep cycles.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-moon" style="color:#10b981;"></i> Sleep Planner</h2></div>
+    <div class="tool-body">
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="sc-wake-mode" onclick="scMode('wake')">When should I wake up?</button>
+        <button class="mode-btn" id="sc-bed-mode" onclick="scMode('bed')">When should I sleep?</button>
+      </div>
+      <div class="form-group">
+        <label id="sc-label" for="sc-time">I want to fall asleep at:</label>
+        <input type="time" id="sc-time" value="23:00">
+      </div>
+      <p style="font-size:0.82rem;color:var(--text-secondary);margin-top:0.5rem;">âš¡ Includes 14 minutes to fall asleep. Sleep cycles are 90 minutes each.</p>
+      <div class="wake-times" id="sc-results"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Clock â€” Live Times for Global Cities | Utilvault</title>
+  <meta name="description" content="Display live current times for up to 5 pinned global cities side by side. Choose from 40+ cities across all time zones. Free, no sign-up.">
+  <meta name="keywords" content="world clock, time zones, global time, city time, international clock, multiple time zones">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/world-clock/">
+  <meta name="theme-color" content="#f59e0b">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .clocks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem;margin-top:1.25rem;}
+    .clock-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;padding:1.5rem;text-align:center;position:relative;}
+    .clock-city{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-secondary);margin-bottom:0.25rem;}
+    .clock-time{font-size:2rem;font-weight:800;letter-spacing:0.04em;color:var(--text-primary);font-variant-numeric:tabular-nums;}
+    .clock-date{font-size:0.8rem;color:var(--text-secondary);margin-top:0.25rem;}
+    .clock-tz{font-size:0.7rem;color:var(--text-secondary);opacity:0.6;margin-top:0.15rem;}
+    .clock-remove{position:absolute;top:0.6rem;right:0.75rem;background:none;border:none;cursor:pointer;color:var(--text-secondary);font-size:0.85rem;opacity:0.5;transition:var(--transition);}
+    .clock-remove:hover{opacity:1;color:#ef4444;}
+    .add-clock-row{display:flex;gap:0.75rem;margin-top:1.25rem;}
+    .add-clock-row select{flex:1;}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-house"></i> Life &amp; Home <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../kitchen-unit-converter/index.html"><i class="fa-solid fa-utensils"></i> Kitchen Converter</a>
+      <a href="../date-duration-calculator/index.html"><i class="fa-solid fa-calendar-days"></i> Date Duration</a>
+      <a href="../cooking-timer/index.html"><i class="fa-solid fa-stopwatch"></i> Cooking Timer</a>
+      <a href="../fuel-trip-calculator/index.html"><i class="fa-solid fa-gas-pump"></i> Fuel Trip Cost</a>
+      <a href="../random-choice-generator/index.html"><i class="fa-solid fa-shuffle"></i> Random Choice</a>
+      <a href="../unit-price-comparator/index.html"><i class="fa-solid fa-tags"></i> Unit Price Compare</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-earth-americas"></i> World Clock</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">World Clock</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main" style="max-width:960px;">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-earth-americas" style="color:#f59e0b;"></i></div>
+    <h1>World <span class="text-gradient">Clock</span></h1>
+    <p>Display live times for up to 5 pinned global cities side by side.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-clock" style="color:#f59e0b;"></i> Your Clocks</h2></div>
+    <div class="tool-body">
+      <div class="clocks-grid" id="clocks-grid"></div>
+      <div class="add-clock-row">
+        <select id="wc-city-select" aria-label="Select city to add"></select>
+        <button class="btn-tool" id="wc-add-btn" style="width:auto;margin-top:0;padding:0.75rem 1.5rem;"><i class="fa-solid fa-plus"></i> Add City</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

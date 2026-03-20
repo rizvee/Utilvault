@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image to WebP Converter â€” PNG/JPG to WebP | Utilvault</title>
+  <meta name="description" content="Convert PNG or JPG images to WebP format using the Canvas API. Runs 100% in your browser â€” images never leave your device. Free, no sign-up.">
+  <meta name="keywords" content="image to webp, convert to webp, png to webp, jpg to webp, webp converter, image converter, canvas api">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/image-to-webp/">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .iw-drop{border:2px dashed var(--border-color);border-radius:14px;padding:3rem 2rem;text-align:center;cursor:pointer;color:var(--text-secondary);transition:var(--transition);margin-bottom:1.25rem;}
+    .iw-drop:hover,.iw-drop.over{border-color:#3b82f6;color:#3b82f6;background:rgba(59,130,246,0.04);}
+    .iw-drop i{font-size:2rem;display:block;margin-bottom:0.75rem;}
+    .iw-preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.25rem;}
+    .iw-preview-card{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:12px;padding:1rem;}
+    .iw-preview-card h4{font-size:0.8rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.65rem;}
+    .iw-preview-card img{width:100%;max-height:200px;object-fit:contain;border-radius:8px;}
+    .iw-meta{font-size:0.78rem;color:var(--text-secondary);margin-top:0.4rem;}
+    .quality-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem;}
+    .quality-row label{font-size:0.85rem;font-weight:600;color:var(--text-secondary);white-space:nowrap;}
+    .quality-row input[type=range]{flex:1;}
+    .quality-row span{font-size:0.85rem;font-weight:700;min-width:40px;}
+    @media(max-width:580px){.iw-preview-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-code"></i> Developer <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../json-formatter/index.html"><i class="fa-solid fa-brackets-curly"></i> JSON Formatter</a>
+      <a href="../base64/index.html"><i class="fa-solid fa-file-code"></i> Base64</a>
+      <a href="../url-encoder/index.html"><i class="fa-solid fa-link"></i> URL Encoder</a>
+      <a href="../html-entity/index.html"><i class="fa-solid fa-code"></i> HTML Entities</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-image"></i> Image â†’ WebP</a>
+      <a href="../css-glassmorphism/index.html"><i class="fa-solid fa-droplet"></i> Glassmorphism</a>
+      <a href="../contrast-checker/index.html"><i class="fa-solid fa-circle-half-stroke"></i> Contrast Checker</a>
+      <a href="../utm-builder/index.html"><i class="fa-solid fa-chart-simple"></i> UTM Builder</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Image â†’ WebP</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-image" style="color:#3b82f6;"></i></div>
+    <h1>Image â†’ <span class="text-gradient">WebP Converter</span></h1>
+    <p>Convert PNG/JPG to WebP entirely in your browser. Images never leave your device.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-image" style="color:#3b82f6;"></i> Upload Image</h2></div>
+    <div class="tool-body">
+      <div class="iw-drop" id="iw-drop" onclick="document.getElementById('iw-input').click()">
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+        <strong>Click or drop an image here</strong>
+        <p style="margin:0.25rem 0 0;font-size:0.85rem;">PNG, JPG, GIF, BMP, AVIF supported</p>
+      </div>
+      <input type="file" id="iw-input" accept="image/*" style="display:none;">
+      <div class="quality-row">
+        <label for="iw-quality">WebP Quality</label>
+        <input type="range" id="iw-quality" min="10" max="100" value="85">
+        <span id="iw-quality-val">85%</span>
+      </div>
+      <canvas id="iw-canvas" style="display:none;"></canvas>
+      <div class="iw-preview-grid" id="iw-previews" style="display:none;">
+        <div class="iw-preview-card"><h4>Original</h4><img id="iw-orig-img" alt="Original"><div class="iw-meta" id="iw-orig-meta"></div></div>
+        <div class="iw-preview-card"><h4>WebP Output</h4><img id="iw-webp-img" alt="WebP preview"><div class="iw-meta" id="iw-webp-meta"></div></div>
+      </div>
+      <div class="action-row" id="iw-actions" style="display:none;margin-top:1.25rem;">
+        <button class="btn-tool" id="iw-download" style="margin-top:0;"><i class="fa-solid fa-download"></i> Download WebP</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

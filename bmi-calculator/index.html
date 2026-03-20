@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator â€” Body Mass Index with Health Tips | Utilvault</title>
+  <meta name="description" content="Calculate your Body Mass Index (BMI) from height and weight in metric or imperial units. Includes health category tips and BMI range reference. Free, no sign-up.">
+  <meta name="keywords" content="bmi calculator, body mass index, bmi chart, weight height calculator, healthy bmi, bmi range">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/bmi-calculator/">
+  <meta name="theme-color" content="#10b981">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .bmi-meter{background:linear-gradient(to right,#3b82f6 0%,#10b981 25%,#f59e0b 50%,#ef4444 75%,#7c3aed 100%);height:12px;border-radius:6px;margin:1rem 0;position:relative;}
+    .bmi-pointer{position:absolute;top:-6px;width:24px;height:24px;background:white;border:3px solid var(--text-primary);border-radius:50%;transform:translateX(-50%);transition:left 0.5s ease;box-shadow:0 2px 8px rgba(0,0,0,0.2);}
+    .bmi-labels{display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-secondary);}
+    .bmi-cat{font-size:1.25rem;font-weight:700;text-align:center;margin:0.75rem 0;}
+    .bmi-ranges{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:1rem;}
+    .bmi-range-item{background:var(--bg-primary);border-radius:8px;padding:0.6rem 0.9rem;font-size:0.8rem;display:flex;justify-content:space-between;}
+    .unit-toggle{display:flex;gap:0.5rem;margin-bottom:1.25rem;}
+    .unit-btn{flex:1;padding:0.6rem;border:1px solid var(--border-color);background:var(--bg-primary);border-radius:8px;cursor:pointer;font-family:var(--font-main);font-weight:600;font-size:0.9rem;color:var(--text-secondary);transition:var(--transition);}
+    .unit-btn.active{background:var(--accent);color:white;border-color:var(--accent);}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-heart-pulse"></i> Health <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="./index.html" class="active"><i class="fa-solid fa-weight-scale"></i> BMI Calculator</a>
+      <a href="../sleep-calculator/index.html"><i class="fa-solid fa-moon"></i> Sleep Calculator</a>
+      <a href="../water-tracker/index.html"><i class="fa-solid fa-droplet"></i> Water Tracker</a>
+      <a href="../breath-pacer/index.html"><i class="fa-solid fa-wind"></i> Breath Pacer</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">BMI Calculator</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-weight-scale" style="color:#10b981;"></i></div>
+    <h1>BMI <span class="text-gradient">Calculator</span></h1>
+    <p>Compute your Body Mass Index from height and weight with health category tips.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-weight-scale" style="color:#10b981;"></i> Your Measurements</h2></div>
+    <div class="tool-body">
+      <div class="unit-toggle">
+        <button class="unit-btn active" id="bmi-metric" onclick="setBmiUnit('metric')">Metric (kg, cm)</button>
+        <button class="unit-btn" id="bmi-imperial" onclick="setBmiUnit('imperial')">Imperial (lb, ft/in)</button>
+      </div>
+      <div id="bmi-metric-fields">
+        <div class="form-row cols-2">
+          <div class="form-group"><label for="bmi-height-cm">Height (cm)</label><input type="number" id="bmi-height-cm" value="175" min="50" max="250" step="0.1"></div>
+          <div class="form-group"><label for="bmi-weight-kg">Weight (kg)</label><input type="number" id="bmi-weight-kg" value="70" min="1" max="500" step="0.1"></div>
+        </div>
+      </div>
+      <div id="bmi-imperial-fields" style="display:none;">
+        <div class="form-row cols-3">
+          <div class="form-group"><label for="bmi-ft">Height (ft)</label><input type="number" id="bmi-ft" value="5" min="1" max="9"></div>
+          <div class="form-group"><label for="bmi-in">Inches</label><input type="number" id="bmi-in" value="9" min="0" max="11"></div>
+          <div class="form-group"><label for="bmi-lb">Weight (lb)</label><input type="number" id="bmi-lb" value="154" min="1" max="1100" step="0.1"></div>
+        </div>
+      </div>
+      <div id="bmi-result" style="display:none;">
+        <div class="result-card"><div><div class="result-label">Your BMI</div><div class="result-value" id="bmi-val">â€”</div></div><div class="bmi-cat" id="bmi-cat"></div></div>
+        <div class="bmi-meter"><div class="bmi-pointer" id="bmi-ptr" style="left:0%;"></div></div>
+        <div class="bmi-labels"><span>Underweight</span><span>Normal</span><span>Overweight</span><span>Obese</span></div>
+        <div class="bmi-ranges">
+          <div class="bmi-range-item"><span>Underweight</span><span>&lt; 18.5</span></div>
+          <div class="bmi-range-item"><span>Normal weight</span><span>18.5 â€“ 24.9</span></div>
+          <div class="bmi-range-item"><span>Overweight</span><span>25 â€“ 29.9</span></div>
+          <div class="bmi-range-item"><span>Obese</span><span>â‰¥ 30</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

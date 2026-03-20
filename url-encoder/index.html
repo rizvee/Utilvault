@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Encoder / Decoder â€” Encode URL Components | Utilvault</title>
+  <meta name="description" content="Encode and decode URL components using encodeURIComponent. Handles special characters safely for use in web URLs. Free, no sign-up.">
+  <meta name="keywords" content="url encoder, url decoder, encode url, decode url, url component encoder, url safe, encodeURIComponent">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/url-encoder/">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .ue-textarea{min-height:140px;width:100%;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:10px;padding:1.25rem;font-family:'Courier New',monospace;font-size:0.9rem;color:var(--text-primary);resize:vertical;outline:none;transition:var(--transition);line-height:1.6;}
+    .ue-textarea:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.15);}
+    .ue-output{background:#1a1f2e;color:#abb2bf;border:none;}
+    .ue-btns{display:flex;gap:0.75rem;margin:1rem 0;}
+    .ue-btn-enc{background:#3b82f6;color:white;border:none;border-radius:10px;padding:0.7rem 1.5rem;font-family:var(--font-main);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:0.4rem;transition:var(--transition);}
+    .ue-btn-enc:hover{background:#2563eb;}
+    .ue-btn-dec{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:10px;padding:0.7rem 1.5rem;font-family:var(--font-main);font-weight:700;color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;gap:0.4rem;transition:var(--transition);}
+    .ue-btn-dec:hover{border-color:#3b82f6;color:#3b82f6;}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-code"></i> Developer <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../json-formatter/index.html"><i class="fa-solid fa-brackets-curly"></i> JSON Formatter</a>
+      <a href="../base64/index.html"><i class="fa-solid fa-file-code"></i> Base64</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-link"></i> URL Encoder</a>
+      <a href="../html-entity/index.html"><i class="fa-solid fa-code"></i> HTML Entities</a>
+      <a href="../image-to-webp/index.html"><i class="fa-solid fa-image"></i> Image â†’ WebP</a>
+      <a href="../css-glassmorphism/index.html"><i class="fa-solid fa-droplet"></i> Glassmorphism</a>
+      <a href="../contrast-checker/index.html"><i class="fa-solid fa-circle-half-stroke"></i> Contrast Checker</a>
+      <a href="../utm-builder/index.html"><i class="fa-solid fa-chart-simple"></i> UTM Builder</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">URL Encoder</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-link" style="color:#3b82f6;"></i></div>
+    <h1>URL Encoder / <span class="text-gradient">Decoder</span></h1>
+    <p>Encode and decode URL components. Handles special characters safely.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-link" style="color:#3b82f6;"></i> URL Tools</h2></div>
+    <div class="tool-body">
+      <div class="form-group"><label for="ue-input">Input</label><textarea id="ue-input" class="ue-textarea" placeholder="Paste a URL or text to encode/decode..."></textarea></div>
+      <div class="ue-btns">
+        <button class="ue-btn-enc" id="ue-encode"><i class="fa-solid fa-lock"></i> Encode</button>
+        <button class="ue-btn-dec" id="ue-decode"><i class="fa-solid fa-lock-open"></i> Decode</button>
+        <button class="ue-btn-dec" id="ue-swap"><i class="fa-solid fa-arrow-down-up-across-line"></i> Swap</button>
+      </div>
+      <div class="form-group"><label for="ue-output">Output</label><textarea id="ue-output" class="ue-textarea ue-output" readonly></textarea></div>
+      <div class="action-row">
+        <button class="btn-secondary" id="ue-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn-secondary" id="ue-clear"><i class="fa-solid fa-trash"></i> Clear</button>
+      </div>
+      <div style="margin-top:1rem;font-size:0.82rem;color:var(--text-secondary);">
+        <strong>Encode</strong> uses <code style="font-size:0.82rem;">encodeURIComponent</code> &nbsp;Â·&nbsp; <strong>Decode</strong> uses <code style="font-size:0.82rem;">decodeURIComponent</code>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

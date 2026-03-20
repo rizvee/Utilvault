@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTM Link Builder â€” Google Analytics Campaign URLs | Utilvault</title>
+  <meta name="description" content="Build UTM-tagged URLs for Google Analytics campaign tracking in seconds. Add source, medium, campaign, term, and content parameters. Free, no sign-up.">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/utm-builder/">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .utm-output{width:100%;padding:1rem 1.25rem;background:#1a1f2e;color:#abb2bf;border:none;border-radius:10px;font-family:'Courier New',monospace;font-size:0.875rem;min-height:90px;resize:none;outline:none;word-break:break-all;line-height:1.6;}
+    .utm-tips{margin-top:1.25rem;background:var(--bg-secondary);border-radius:10px;padding:1rem 1.25rem;}
+    .utm-tips summary{font-weight:700;cursor:pointer;color:var(--text-secondary);font-size:0.85rem;}
+    .utm-tips p,.utm-tips ul{font-size:0.82rem;color:var(--text-secondary);margin-top:0.5rem;}
+    .utm-tips li{margin-bottom:0.25rem;}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links"><a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div></div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">UTM Link Builder</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-chart-simple" style="color:#3b82f6;"></i></div>
+    <h1>UTM Link <span class="text-gradient">Builder</span></h1>
+    <p>Create properly-tagged campaign URLs for Google Analytics in seconds.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-chart-simple" style="color:#3b82f6;"></i> Campaign Parameters</h2></div>
+    <div class="tool-body">
+      <div class="form-group"><label for="utm-url">Website URL <span style="color:#ef4444;">*</span></label><input type="url" id="utm-url" placeholder="https://example.com/landing-page"></div>
+      <div class="form-row cols-2">
+        <div class="form-group"><label for="utm-source">Campaign Source <span style="color:#ef4444;">*</span></label><input type="text" id="utm-source" placeholder="google, newsletter, twitter"></div>
+        <div class="form-group"><label for="utm-medium">Campaign Medium <span style="color:#ef4444;">*</span></label><input type="text" id="utm-medium" placeholder="cpc, email, social"></div>
+      </div>
+      <div class="form-group"><label for="utm-name">Campaign Name <span style="color:#ef4444;">*</span></label><input type="text" id="utm-name" placeholder="spring_sale_2026"></div>
+      <div class="form-row cols-2">
+        <div class="form-group"><label for="utm-term">Campaign Term <span style="color:var(--text-secondary);">(optional)</span></label><input type="text" id="utm-term" placeholder="keyword"></div>
+        <div class="form-group"><label for="utm-content">Campaign Content <span style="color:var(--text-secondary);">(optional)</span></label><input type="text" id="utm-content" placeholder="logo_link, text_link"></div>
+      </div>
+      <div class="form-group" style="margin-top:1rem;"><label>Generated UTM URL</label><textarea id="utm-output" class="utm-output" readonly></textarea></div>
+      <div class="action-row">
+        <button class="btn-tool" id="utm-copy" style="margin-top:0;font-size:0.9rem;"><i class="fa-regular fa-copy"></i> Copy URL</button>
+        <button class="btn-secondary" id="utm-clear"><i class="fa-solid fa-trash"></i> Clear</button>
+      </div>
+      <details class="utm-tips">
+        <summary>ðŸ“– UTM Parameter Guide</summary>
+        <ul>
+          <li><strong>Source</strong>: The referrer (google, facebook, newsletter)</li>
+          <li><strong>Medium</strong>: Marketing channel (cpc, email, organic, social)</li>
+          <li><strong>Campaign</strong>: Specific campaign name (spring_sale, brand_awareness)</li>
+          <li><strong>Term</strong>: Paid keywords (leave blank for non-search ads)</li>
+          <li><strong>Content</strong>: Differentiate ads (use for A/B tests)</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

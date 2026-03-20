@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Entity Converter â€” Encode & Decode HTML Entities | Utilvault</title>
+  <meta name="description" content="Safely convert HTML special characters like &lt; &gt; &amp; to and from HTML entities to prevent XSS. Works in your browser. Free, no sign-up.">
+  <meta name="keywords" content="html entity encoder, html entity decoder, html escape, html unescape, xss prevention, html entities, encode html">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/html-entity/">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .he-textarea{min-height:200px;width:100%;padding:1.25rem;border:1px solid var(--border-color);border-radius:10px;font-family:'Courier New',monospace;font-size:0.9rem;resize:vertical;outline:none;line-height:1.6;transition:var(--transition);}
+    .he-input{background:var(--bg-primary);color:var(--text-primary);}
+    .he-input:focus{border-color:#3b82f6;box-shadow:0 0 0 3px rgba(59,130,246,0.15);}
+    .he-output{background:#1a1f2e;color:#abb2bf;border:none;}
+    .he-btns{display:flex;gap:0.75rem;margin:1rem 0;}
+    .he-btn{padding:0.7rem 1.5rem;border-radius:10px;font-family:var(--font-main);font-weight:700;font-size:0.9rem;cursor:pointer;display:flex;align-items:center;gap:0.4rem;transition:var(--transition);}
+    .he-btn-enc{background:#3b82f6;color:white;border:none;}
+    .he-btn-enc:hover{background:#2563eb;}
+    .he-btn-dec{background:var(--bg-primary);border:1px solid var(--border-color);color:var(--text-secondary);}
+    .he-btn-dec:hover{border-color:#3b82f6;color:#3b82f6;}
+    .he-ref{margin-top:1.25rem;background:var(--bg-secondary);border-radius:10px;padding:1rem;font-size:0.82rem;}
+    .he-ref table{width:100%;border-collapse:collapse;}
+    .he-ref td{padding:0.3rem 0.6rem;border:1px solid var(--border-color);font-family:'Courier New',monospace;}
+    .he-ref td:first-child{color:#3b82f6;font-weight:700;}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-code"></i> Developer <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../json-formatter/index.html"><i class="fa-solid fa-brackets-curly"></i> JSON Formatter</a>
+      <a href="../base64/index.html"><i class="fa-solid fa-file-code"></i> Base64</a>
+      <a href="../url-encoder/index.html"><i class="fa-solid fa-link"></i> URL Encoder</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-code"></i> HTML Entities</a>
+      <a href="../image-to-webp/index.html"><i class="fa-solid fa-image"></i> Image â†’ WebP</a>
+      <a href="../css-glassmorphism/index.html"><i class="fa-solid fa-droplet"></i> Glassmorphism</a>
+      <a href="../contrast-checker/index.html"><i class="fa-solid fa-circle-half-stroke"></i> Contrast Checker</a>
+      <a href="../utm-builder/index.html"><i class="fa-solid fa-chart-simple"></i> UTM Builder</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">HTML Entity Converter</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-code" style="color:#3b82f6;"></i></div>
+    <h1>HTML Entity <span class="text-gradient">Converter</span></h1>
+    <p>Encode and decode HTML special characters to prevent XSS and display raw HTML safely.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-code" style="color:#3b82f6;"></i> Encode / Decode</h2></div>
+    <div class="tool-body">
+      <div class="form-group"><label for="he-input">Input</label><textarea id="he-input" class="he-textarea he-input" placeholder="<h1>Hello &amp; welcome!</h1>"></textarea></div>
+      <div class="he-btns">
+        <button class="he-btn he-btn-enc" id="he-encode"><i class="fa-solid fa-lock"></i> Encode HTML</button>
+        <button class="he-btn he-btn-dec" id="he-decode"><i class="fa-solid fa-lock-open"></i> Decode Entities</button>
+        <button class="he-btn he-btn-dec" id="he-swap"><i class="fa-solid fa-arrow-down-up-across-line"></i> Swap</button>
+      </div>
+      <div class="form-group"><label for="he-output">Output</label><textarea id="he-output" class="he-textarea he-output" readonly></textarea></div>
+      <div class="action-row">
+        <button class="btn-secondary" id="he-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn-secondary" id="he-clear"><i class="fa-solid fa-trash"></i> Clear</button>
+      </div>
+      <div class="he-ref">
+        <strong style="color:var(--text-primary);">Common Entities</strong>
+        <table style="margin-top:0.5rem;">
+          <tr><td>&amp;lt;</td><td>&lt;</td><td>&amp;gt;</td><td>&gt;</td><td>&amp;amp;</td><td>&amp;</td></tr>
+          <tr><td>&amp;quot;</td><td>"</td><td>&amp;apos;</td><td>'</td><td>&amp;nbsp;</td><td>(space)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

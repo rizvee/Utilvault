@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compound Interest Calculator â€” Savings Growth Estimator | Utilvault</title>
+  <meta name="description" content="Calculate compound interest and estimate long-term savings growth from your principal, interest rate, compounding frequency, and time period. Free, no sign-up.">
+  <meta name="keywords" content="compound interest calculator, savings calculator, investment growth, compound interest formula, future value calculator">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/compound-interest/">
+  <meta name="theme-color" content="#14b8a6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .ci-results{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.25rem;}
+    .ci-stat{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:12px;padding:1rem 1.25rem;text-align:center;}
+    .ci-stat .cl{font-size:0.8rem;font-weight:600;color:var(--text-secondary);}
+    .ci-stat .cv{font-size:1.4rem;font-weight:800;color:var(--text-primary);margin-top:0.15rem;}
+    .ci-stat.featured{border-color:#14b8a6;background:rgba(20,184,166,0.06);}
+    .ci-stat.featured .cv{color:#14b8a6;}
+    .growth-bar-wrap{margin-top:1.25rem;}
+    .growth-bar-label{font-size:0.8rem;font-weight:600;color:var(--text-secondary);margin-bottom:0.4rem;display:flex;justify-content:space-between;}
+    .growth-bar{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:50px;height:14px;overflow:hidden;}
+    .growth-fill{background:linear-gradient(90deg,#14b8a6,#3b82f6);height:100%;border-radius:50px;transition:width 0.5s ease;}
+    @media(max-width:560px){.ci-results{grid-template-columns:1fr 1fr;}}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-wallet"></i> Finance <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../tip-splitter/index.html"><i class="fa-solid fa-receipt"></i> Tip Splitter</a>
+      <a href="../discount-calculator/index.html"><i class="fa-solid fa-percent"></i> Discount Calc</a>
+      <a href="../expense-logger/index.html"><i class="fa-solid fa-list-check"></i> Expense Logger</a>
+      <a href="../percentage-calculator/index.html"><i class="fa-solid fa-chart-line"></i> % Calculator</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-piggy-bank"></i> Compound Interest</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Compound Interest</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-piggy-bank" style="color:#14b8a6;"></i></div>
+    <h1>Compound Interest <span class="text-gradient">Calculator</span></h1>
+    <p>Estimate long-term savings growth from principal amount, interest rate, and time.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-piggy-bank" style="color:#14b8a6;"></i> Investment Details</h2></div>
+    <div class="tool-body">
+      <div class="form-row cols-2">
+        <div class="form-group"><label for="ci-principal">Principal ($)</label><input type="number" id="ci-principal" value="10000" min="0" step="any" placeholder="10000"></div>
+        <div class="form-group"><label for="ci-rate">Annual Interest Rate (%)</label><input type="number" id="ci-rate" value="7" min="0" step="any" placeholder="7"></div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group"><label for="ci-years">Time Period (years)</label><input type="number" id="ci-years" value="10" min="1" max="100" placeholder="10"></div>
+        <div class="form-group"><label for="ci-freq">Compound Frequency</label>
+          <select id="ci-freq">
+            <option value="1">Annually (1x/year)</option>
+            <option value="2">Semi-annually (2x/year)</option>
+            <option value="4">Quarterly (4x/year)</option>
+            <option value="12" selected>Monthly (12x/year)</option>
+            <option value="365">Daily (365x/year)</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label for="ci-monthly">Monthly Contribution ($) â€” optional</label><input type="number" id="ci-monthly" value="0" min="0" step="any" placeholder="0"></div>
+      <div class="ci-results">
+        <div class="ci-stat"><div class="cl">Principal</div><div class="cv" id="ci-principal-out">$10,000</div></div>
+        <div class="ci-stat"><div class="cl">Interest Earned</div><div class="cv" id="ci-interest-out">â€”</div></div>
+        <div class="ci-stat featured"><div class="cl">Final Balance</div><div class="cv" id="ci-final-out">â€”</div></div>
+      </div>
+      <div class="growth-bar-wrap">
+        <div class="growth-bar-label"><span>Principal</span><span>Interest Earned</span></div>
+        <div class="growth-bar"><div class="growth-fill" id="ci-bar" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

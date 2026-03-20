@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base64 Encoder / Decoder â€” Text & Image | Utilvault</title>
+  <meta name="description" content="Encode text or files to Base64 and decode Base64 strings back to plaintext or images. Works entirely in your browser. Free, no sign-up.">
+  <meta name="keywords" content="base64 encoder, base64 decoder, encode base64, decode base64, base64 converter, text to base64, image to base64">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/base64/">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .b64-tabs{display:flex;border-bottom:1px solid var(--glass-border);margin-bottom:0;}
+    .b64-tab{padding:0.75rem 1.5rem;background:none;border:none;font-family:var(--font-main);font-size:0.88rem;font-weight:700;color:var(--text-secondary);cursor:pointer;border-bottom:2px solid transparent;transition:var(--transition);}
+    .b64-tab.active{color:#3b82f6;border-bottom-color:#3b82f6;}
+    .b64-pane{display:none;padding:1.5rem;}
+    .b64-pane.active{display:block;}
+    .code-ta{min-height:200px;width:100%;background:#1a1f2e;color:#abb2bf;border:none;border-radius:10px;padding:1.25rem;font-family:'Courier New',monospace;font-size:0.875rem;resize:vertical;outline:none;line-height:1.6;}
+    .file-drop{border:2px dashed var(--border-color);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;color:var(--text-secondary);font-size:0.9rem;transition:var(--transition);margin-bottom:1rem;}
+    .file-drop:hover,.file-drop.over{border-color:#3b82f6;color:#3b82f6;background:rgba(59,130,246,0.04);}
+    .b64-preview-img{max-width:100%;max-height:240px;border-radius:10px;display:none;margin-top:1rem;}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-code"></i> Developer <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../json-formatter/index.html"><i class="fa-solid fa-brackets-curly"></i> JSON Formatter</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-file-code"></i> Base64</a>
+      <a href="../url-encoder/index.html"><i class="fa-solid fa-link"></i> URL Encoder</a>
+      <a href="../html-entity/index.html"><i class="fa-solid fa-code"></i> HTML Entities</a>
+      <a href="../image-to-webp/index.html"><i class="fa-solid fa-image"></i> Image â†’ WebP</a>
+      <a href="../css-glassmorphism/index.html"><i class="fa-solid fa-droplet"></i> Glassmorphism</a>
+      <a href="../contrast-checker/index.html"><i class="fa-solid fa-circle-half-stroke"></i> Contrast Checker</a>
+      <a href="../utm-builder/index.html"><i class="fa-solid fa-chart-simple"></i> UTM Builder</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Base64</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-file-code" style="color:#3b82f6;"></i></div>
+    <h1>Base64 Encoder / <span class="text-gradient">Decoder</span></h1>
+    <p>Encode text or files to Base64 and decode Base64 back to plaintext or images.</p>
+  </div>
+  <div class="tool-box">
+    <div class="b64-tabs">
+      <button class="b64-tab active" onclick="b64Tab('encode')" id="tab-enc">Encode Text</button>
+      <button class="b64-tab" onclick="b64Tab('decode')" id="tab-dec">Decode</button>
+      <button class="b64-tab" onclick="b64Tab('file')" id="tab-file">Encode File</button>
+    </div>
+    <!-- Encode -->
+    <div class="b64-pane active" id="pane-encode">
+      <div class="form-group"><label for="b64-input-text">Plain Text</label><textarea id="b64-input-text" class="code-ta" placeholder="Enter text to encode to Base64..."></textarea></div>
+      <button class="btn-tool" id="b64-encode-btn" style="margin-bottom:1rem;"><i class="fa-solid fa-lock"></i> Encode to Base64</button>
+      <div class="form-group"><label for="b64-output-enc">Base64 Output</label><textarea id="b64-output-enc" class="code-ta" readonly></textarea></div>
+      <div class="action-row"><button class="btn-secondary" id="b64-copy-enc"><i class="fa-regular fa-copy"></i> Copy</button></div>
+    </div>
+    <!-- Decode -->
+    <div class="b64-pane" id="pane-decode">
+      <div class="form-group"><label for="b64-input-dec">Base64 String</label><textarea id="b64-input-dec" class="code-ta" placeholder="Paste Base64 string here..."></textarea></div>
+      <button class="btn-tool" id="b64-decode-btn" style="margin-bottom:1rem;"><i class="fa-solid fa-lock-open"></i> Decode from Base64</button>
+      <div class="form-group"><label for="b64-output-dec">Decoded Output</label><textarea id="b64-output-dec" class="code-ta" readonly></textarea></div>
+      <img id="b64-preview-img" class="b64-preview-img" alt="Decoded image preview">
+      <div class="action-row"><button class="btn-secondary" id="b64-copy-dec"><i class="fa-regular fa-copy"></i> Copy</button></div>
+    </div>
+    <!-- File encode -->
+    <div class="b64-pane" id="pane-file">
+      <div class="file-drop" id="b64-file-drop" onclick="document.getElementById('b64-file-input').click()">
+        <i class="fa-solid fa-cloud-arrow-up" style="font-size:1.5rem;margin-bottom:0.5rem;display:block;"></i>
+        Click or drop any file here to encode as Base64
+      </div>
+      <input type="file" id="b64-file-input" style="display:none;">
+      <div class="form-group" id="b64-file-result" style="display:none;"><label>Base64 Output</label><textarea id="b64-file-output" class="code-ta" readonly></textarea></div>
+      <div class="action-row" id="b64-file-actions" style="display:none;">
+        <button class="btn-secondary" id="b64-copy-file"><i class="fa-regular fa-copy"></i> Copy</button>
+        <button class="btn-secondary" id="b64-copy-css"><i class="fa-solid fa-css3"></i> Copy as CSS data-uri</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

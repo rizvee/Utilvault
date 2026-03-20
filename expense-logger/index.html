@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Expense Logger â€” Track Your Spending | Utilvault</title>
+  <meta name="description" content="Log daily expenses in a lightweight table with categories. Data saves automatically to localStorage. Export as CSV. Free, no sign-up.">
+  <meta name="keywords" content="expense logger, expense tracker, daily spending tracker, budget tracker, spending log, personal finance">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/expense-logger/">
+  <meta name="theme-color" content="#14b8a6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .expense-table-wrap{overflow-x:auto;margin-top:1.25rem;}
+    table{width:100%;border-collapse:collapse;font-size:0.9rem;}
+    thead th{background:var(--bg-secondary);padding:0.65rem 0.9rem;text-align:left;font-size:0.8rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em;border-bottom:1px solid var(--border-color);}
+    tbody tr{border-bottom:1px solid var(--border-color);transition:var(--transition);}
+    tbody tr:hover{background:var(--bg-secondary);}
+    tbody td{padding:0.65rem 0.9rem;color:var(--text-primary);}
+    .cat-badge{display:inline-flex;align-items:center;gap:0.25rem;padding:0.2rem 0.55rem;border-radius:20px;font-size:0.75rem;font-weight:600;}
+    .del-btn{background:none;border:none;cursor:pointer;color:var(--text-secondary);font-size:0.9rem;padding:0.25rem;transition:var(--transition);}
+    .del-btn:hover{color:#ef4444;}
+    .expense-total{background:rgba(20,184,166,0.08);border:1px solid rgba(20,184,166,0.25);border-radius:10px;padding:0.85rem 1.25rem;display:flex;align-items:center;justify-content:space-between;margin-top:1rem;}
+    .expense-total .et-label{font-weight:600;color:var(--text-secondary);}
+    .expense-total .et-val{font-size:1.5rem;font-weight:800;color:#14b8a6;}
+    .add-expense-form{display:grid;grid-template-columns:1fr 120px 150px auto auto;gap:0.6rem;align-items:end;margin-bottom:1rem;}
+    @media(max-width:680px){.add-expense-form{grid-template-columns:1fr 1fr;}}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-wallet"></i> Finance <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../tip-splitter/index.html"><i class="fa-solid fa-receipt"></i> Tip Splitter</a>
+      <a href="../discount-calculator/index.html"><i class="fa-solid fa-percent"></i> Discount Calc</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-list-check"></i> Expense Logger</a>
+      <a href="../percentage-calculator/index.html"><i class="fa-solid fa-chart-line"></i> % Calculator</a>
+      <a href="../compound-interest/index.html"><i class="fa-solid fa-piggy-bank"></i> Compound Interest</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Expense Logger</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main" style="max-width:960px;">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-list-check" style="color:#14b8a6;"></i></div>
+    <h1>Daily Expense <span class="text-gradient">Logger</span></h1>
+    <p>Log and track your daily expenses with categories. Auto-saved to localStorage.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-plus" style="color:#14b8a6;"></i> Add Expense</h2></div>
+    <div class="tool-body">
+      <div class="add-expense-form">
+        <div class="form-group"><label for="el-desc">Description</label><input type="text" id="el-desc" placeholder="Coffee, lunch, etc."></div>
+        <div class="form-group"><label for="el-amount">Amount ($)</label><input type="number" id="el-amount" min="0" step="0.01" placeholder="0.00"></div>
+        <div class="form-group"><label for="el-cat">Category</label>
+          <select id="el-cat">
+            <option>Food &amp; Dining</option><option>Transport</option><option>Shopping</option>
+            <option>Health</option><option>Entertainment</option><option>Bills</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="el-date">Date</label><input type="date" id="el-date"></div>
+        <div class="form-group"><label>&nbsp;</label><button class="btn-tool" id="el-add-btn" style="margin-top:0;"><i class="fa-solid fa-plus"></i></button></div>
+      </div>
+      <div class="action-row">
+        <button class="btn-secondary" id="el-export"><i class="fa-solid fa-download"></i> Export CSV</button>
+        <button class="btn-secondary" id="el-clear"><i class="fa-solid fa-trash"></i> Clear All</button>
+      </div>
+      <div class="expense-table-wrap">
+        <table id="el-table">
+          <thead><tr><th>Description</th><th>Category</th><th>Amount</th><th>Date</th><th></th></tr></thead>
+          <tbody id="el-tbody"></tbody>
+        </table>
+      </div>
+      <div class="expense-total"><span class="et-label">Total Expenses</span><span class="et-val" id="el-total">$0.00</span></div>
+    </div>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

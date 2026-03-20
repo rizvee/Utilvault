@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breath Pacer â€” Box Breathing & Meditation Timer | Utilvault</title>
+  <meta name="description" content="An animated visual guide for box breathing (4-4-4-4) and deep meditation sessions. Configurable session timer. Reduces stress and anxiety. Free, no sign-up.">
+  <meta name="keywords" content="breath pacer, box breathing, meditation timer, breathing exercise, deep breathing, anxiety relief, mindfulness">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/breath-pacer/">
+  <meta name="theme-color" content="#10b981">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .breath-wrap{display:flex;flex-direction:column;align-items:center;gap:2rem;padding:2rem;}
+    .breath-circle-wrap{position:relative;width:220px;height:220px;}
+    .breath-ring{width:100%;height:100%;border-radius:50%;border:4px solid rgba(16,185,129,0.2);position:absolute;top:0;left:0;}
+    .breath-fill{width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.3),rgba(6,182,212,0.1));transform:scale(0.5);transition:transform linear;position:absolute;top:0;left:0;}
+    .breath-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;}
+    .breath-phase{font-size:1.1rem;font-weight:800;color:var(--text-primary);}
+    .breath-count{font-size:2.5rem;font-weight:900;color:#10b981;font-variant-numeric:tabular-nums;line-height:1;}
+    .breath-presets{display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;}
+    .preset-btn{padding:0.45rem 1rem;border:1px solid var(--border-color);background:var(--bg-primary);border-radius:20px;cursor:pointer;font-family:var(--font-main);font-size:0.82rem;font-weight:600;color:var(--text-secondary);transition:var(--transition);}
+    .preset-btn.active,.preset-btn:hover{border-color:#10b981;background:rgba(16,185,129,0.1);color:#10b981;}
+    .session-info{font-size:0.85rem;color:var(--text-secondary);}
+    .start-btn{background:#10b981;}
+    .start-btn:hover{background:#059669;}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-heart-pulse"></i> Health <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../bmi-calculator/index.html"><i class="fa-solid fa-weight-scale"></i> BMI Calculator</a>
+      <a href="../sleep-calculator/index.html"><i class="fa-solid fa-moon"></i> Sleep Calculator</a>
+      <a href="../water-tracker/index.html"><i class="fa-solid fa-droplet"></i> Water Tracker</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-wind"></i> Breath Pacer</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Breath Pacer</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-wind" style="color:#10b981;"></i></div>
+    <h1>Breath Pacer &amp; <span class="text-gradient">Meditation Timer</span></h1>
+    <p>Guided box breathing animation. Reduces stress, improves focus, and calms the mind.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-wind" style="color:#10b981;"></i> Breathing Pattern</h2></div>
+    <div class="tool-body">
+      <div class="breath-presets">
+        <button class="preset-btn active" data-pattern="4-4-4-4">Box Breathing (4-4-4-4)</button>
+        <button class="preset-btn" data-pattern="4-7-8-0">4-7-8 Relaxation</button>
+        <button class="preset-btn" data-pattern="5-0-5-0">Deep Breathing (5-5)</button>
+      </div>
+      <div class="breath-wrap">
+        <div class="breath-circle-wrap">
+          <div class="breath-ring"></div>
+          <div class="breath-fill" id="breath-fill"></div>
+          <div class="breath-label">
+            <div class="breath-phase" id="breath-phase">Ready</div>
+            <div class="breath-count" id="breath-count">â€“</div>
+          </div>
+        </div>
+        <div class="session-info" id="bp-session-info">Session: 0 cycles complete</div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="form-group"><label for="bp-duration">Session Duration (min)</label><input type="number" id="bp-duration" value="5" min="1" max="60"></div>
+        <div class="form-group"><label>Time Remaining</label><input type="text" id="bp-remaining" value="5:00" readonly></div>
+      </div>
+      <button class="btn-tool start-btn" id="bp-start"><i class="fa-solid fa-play"></i> Start Session</button>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO -->
+  <title>HTML Visual Composer â€” WYSIWYG HTML Editor with Live Preview | Utilvault</title>
+  <meta name="description" content="A free, in-browser WYSIWYG HTML editor. Compose rich content visually, see the live HTML code and rendered preview panes update in real time. Export clean HTML, download a full page, or copy to clipboard. No sign-up needed.">
+  <meta name="keywords" content="html editor, wysiwyg editor, visual html composer, html preview, online html editor, contenteditable editor, free html editor, rich text editor, utilvault">
+  <meta name="author" content="Hasan Rizvee">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/html-composer/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rizvee.github.io/Utilvault/html-composer/">
+  <meta property="og:title" content="HTML Visual Composer â€” WYSIWYG Editor | Utilvault">
+  <meta property="og:description" content="Compose rich HTML visually with a live code view and rendered preview. 100% free, in-browser, no sign-up.">
+  <meta property="og:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+  <meta property="og:site_name" content="Utilvault">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HTML Visual Composer â€” WYSIWYG Editor | Utilvault">
+  <meta name="twitter:description" content="Compose rich HTML visually with live code view and preview. Free, in-browser.">
+  <meta name="twitter:image" content="https://rizvee.github.io/Utilvault/assets/images/og-image.png">
+
+  <meta name="theme-color" content="#f97316">
+
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "HTML Visual Composer",
+        "url": "https://rizvee.github.io/Utilvault/html-composer/",
+        "description": "In-browser WYSIWYG HTML editor with live code and preview panes, clean HTML export, and Base64 image embedding.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Person", "name": "Hasan Rizvee", "url": "https://rizvee.github.io" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",                 "item": "https://rizvee.github.io/Utilvault/" },
+          { "@type": "ListItem", "position": 2, "name": "HTML Visual Composer", "item": "https://rizvee.github.io/Utilvault/html-composer/" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- â”€â”€ Navigation â”€â”€ -->
+  <header role="banner">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="../index.html" class="logo" aria-label="Utilvault home">
+        <i class="fa-solid fa-vault" aria-hidden="true"></i> Util<span>vault</span>
+      </a>
+      <div class="nav-links" id="nav-links" role="menubar">
+        <a href="../index.html" role="menuitem">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+        <a href="../unit-converter/index.html" role="menuitem">Unit Converter</a>
+        <a href="../currency-converter/index.html" role="menuitem">Currency</a>
+        <a href="../password-generator/index.html" role="menuitem">Password Gen</a>
+        <a href="../age-calculator/index.html" role="menuitem">Age Calc</a>
+        <a href="../readme-generator/index.html" role="menuitem">Readme Gen</a>
+        <a href="../qr-generator/index.html" role="menuitem">QR Code</a>
+        <a href="./index.html" class="active" role="menuitem">HTML Composer</a>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme">
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a>
+    <span class="sep" aria-hidden="true">â€º</span>
+    <span class="current">HTML Visual Composer</span>
+  </nav>
+
+  <main id="main-content" class="container page-wrapper" role="main">
+
+    <!-- Page Header -->
+    <div class="header-section text-center">
+      <div class="icon-wrapper glass-panel">
+        <i class="fa-solid fa-code" aria-hidden="true" style="color: #f97316;"></i>
+      </div>
+      <h1>Visual <span class="text-gradient-orange">HTML Composer</span></h1>
+      <p>Compose rich HTML content visually â€” see the live code and rendered preview update in real time. Export clean HTML or download a full page.</p>
+    </div>
+
+    <!-- Split Layout -->
+    <div class="split-layout" id="composer-layout">
+
+      <!-- â”€â”€ Left Pane: WYSIWYG Visual Editor â”€â”€ -->
+      <div class="pane editor-pane glass-panel" role="region" aria-label="Visual editor">
+        <div class="pane-header">
+          <h2><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> Visual Editor</h2>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar" role="toolbar" aria-label="Text formatting toolbar">
+
+          <!-- Row 1 -->
+          <div class="toolbar-row" id="toolbar-row-1">
+
+            <!-- Text Style Group -->
+            <div class="toolbar-group" role="group" aria-label="Text style">
+              <button class="tb-btn" data-cmd="bold" title="Bold (Ctrl+B)" aria-label="Bold">
+                <i class="fa-solid fa-bold" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="italic" title="Italic (Ctrl+I)" aria-label="Italic">
+                <i class="fa-solid fa-italic" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="underline" title="Underline (Ctrl+U)" aria-label="Underline">
+                <i class="fa-solid fa-underline" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="strikeThrough" title="Strikethrough" aria-label="Strikethrough">
+                <i class="fa-solid fa-strikethrough" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <div class="toolbar-sep" aria-hidden="true"></div>
+
+            <!-- Heading Group -->
+            <div class="toolbar-group" role="group" aria-label="Headings">
+              <button class="tb-btn" data-cmd="formatBlock" data-val="h1" title="Heading 1" aria-label="Heading 1">H1</button>
+              <button class="tb-btn" data-cmd="formatBlock" data-val="h2" title="Heading 2" aria-label="Heading 2">H2</button>
+              <button class="tb-btn" data-cmd="formatBlock" data-val="h3" title="Heading 3" aria-label="Heading 3">H3</button>
+              <button class="tb-btn" data-cmd="formatBlock" data-val="p" title="Paragraph" aria-label="Paragraph">P</button>
+            </div>
+
+            <div class="toolbar-sep" aria-hidden="true"></div>
+
+            <!-- List / Block Group -->
+            <div class="toolbar-group" role="group" aria-label="Lists and blocks">
+              <button class="tb-btn" data-cmd="insertUnorderedList" title="Unordered List" aria-label="Unordered list">
+                <i class="fa-solid fa-list-ul" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="insertOrderedList" title="Ordered List" aria-label="Ordered list">
+                <i class="fa-solid fa-list-ol" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="formatBlock" data-val="blockquote" title="Blockquote" aria-label="Blockquote">
+                <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="formatBlock" data-val="pre" title="Code Block" aria-label="Code block">
+                <i class="fa-solid fa-code" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="toolbar-row" id="toolbar-row-2">
+
+            <!-- Alignment Group -->
+            <div class="toolbar-group" role="group" aria-label="Text alignment">
+              <button class="tb-btn" data-cmd="justifyLeft" title="Align Left" aria-label="Align left">
+                <i class="fa-solid fa-align-left" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="justifyCenter" title="Align Center" aria-label="Align center">
+                <i class="fa-solid fa-align-center" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="justifyRight" title="Align Right" aria-label="Align right">
+                <i class="fa-solid fa-align-right" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <div class="toolbar-sep" aria-hidden="true"></div>
+
+            <!-- Utility Group -->
+            <div class="toolbar-group" role="group" aria-label="Insert and utilities">
+              <button class="tb-btn" id="btn-link" title="Insert Link" aria-label="Insert link">
+                <i class="fa-solid fa-link" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" id="btn-image" title="Insert Image" aria-label="Insert image">
+                <i class="fa-solid fa-image" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn" data-cmd="insertHorizontalRule" title="Horizontal Rule" aria-label="Horizontal rule">
+                <i class="fa-solid fa-minus" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <div class="toolbar-sep" aria-hidden="true"></div>
+
+            <!-- Color Group -->
+            <div class="toolbar-group" role="group" aria-label="Colors">
+              <label class="color-btn-wrap" title="Text Color" aria-label="Text color">
+                <i class="fa-solid fa-font" aria-hidden="true"></i>
+                <input type="color" id="txt-color" value="#e11d48" aria-label="Choose text color">
+              </label>
+              <label class="color-btn-wrap" title="Highlight Color" aria-label="Highlight color">
+                <i class="fa-solid fa-highlighter" aria-hidden="true"></i>
+                <input type="color" id="highlight-color" value="#fde68a" aria-label="Choose highlight color">
+              </label>
+            </div>
+
+            <div class="toolbar-sep" aria-hidden="true"></div>
+
+            <!-- Clear Group -->
+            <div class="toolbar-group" role="group" aria-label="Clear formatting">
+              <button class="tb-btn" data-cmd="removeFormat" title="Clear Formatting" aria-label="Clear formatting">
+                <i class="fa-solid fa-text-slash" aria-hidden="true"></i>
+              </button>
+              <button class="tb-btn danger" id="btn-clear-all" title="Clear All Content" aria-label="Clear all content">
+                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Editor Canvas -->
+        <div
+          id="editor-canvas"
+          class="editor-canvas"
+          contenteditable="true"
+          spellcheck="true"
+          role="textbox"
+          aria-multiline="true"
+          aria-label="Rich text editor"
+          data-placeholder="Start typing your content hereâ€¦ Use the toolbar above to format text, insert links, headings, and images."
+        ></div>
+
+        <!-- Status Bar -->
+        <div class="status-bar" aria-live="polite" aria-label="Editor statistics">
+          <span class="stat-chip" id="stat-words"><i class="fa-solid fa-font" aria-hidden="true"></i> <strong id="word-count">0</strong> words</span>
+          <span class="stat-chip" id="stat-chars"><i class="fa-solid fa-keyboard" aria-hidden="true"></i> <strong id="char-count">0</strong> chars</span>
+          <span class="stat-chip" id="stat-reading"><i class="fa-solid fa-book-open-reader" aria-hidden="true"></i> <strong id="read-time">&lt;1</strong> min read</span>
+        </div>
+
+        <!-- Hidden image file input -->
+        <input type="file" id="img-file-input" accept="image/*" style="display:none;" aria-hidden="true">
+      </div>
+
+      <!-- â”€â”€ Right Pane: Code / Preview â”€â”€ -->
+      <div class="pane preview-pane glass-panel" role="region" aria-label="HTML output and preview">
+        <div class="pane-header code-pane-header">
+          <div class="tab-switcher" role="tablist" aria-label="Output view mode">
+            <button class="tab-btn active" id="tab-html"    role="tab" aria-selected="true"  aria-controls="view-html">    <i class="fa-solid fa-code" aria-hidden="true"></i> HTML</button>
+            <button class="tab-btn"        id="tab-preview" role="tab" aria-selected="false" aria-controls="view-preview"> <i class="fa-solid fa-eye" aria-hidden="true"></i>  Preview</button>
+            <button class="tab-btn"        id="tab-clean"   role="tab" aria-selected="false" aria-controls="view-clean">   <i class="fa-solid fa-broom" aria-hidden="true"></i> Clean</button>
+          </div>
+          <div class="code-actions">
+            <button class="action-btn" id="btn-copy"     title="Copy HTML" aria-label="Copy HTML to clipboard"><i class="fa-regular fa-copy" aria-hidden="true"></i> Copy</button>
+            <button class="action-btn" id="btn-download" title="Download .html file" aria-label="Download as HTML file"><i class="fa-solid fa-download" aria-hidden="true"></i> Download</button>
+          </div>
+        </div>
+
+        <!-- Tab panels -->
+        <div class="pane-content code-pane-content">
+
+          <!-- HTML view -->
+          <div id="view-html" class="tab-panel active" role="tabpanel" aria-labelledby="tab-html">
+            <textarea
+              id="code-textarea"
+              class="code-textarea"
+              spellcheck="false"
+              aria-label="Raw HTML code â€” editable"
+              placeholder="Your HTML will appear here as you type in the editorâ€¦"></textarea>
+          </div>
+
+          <!-- Preview view -->
+          <div id="view-preview" class="tab-panel" role="tabpanel" aria-labelledby="tab-preview">
+            <iframe
+              id="preview-iframe"
+              class="preview-iframe"
+              title="Rendered HTML preview"
+              sandbox="allow-same-origin"
+              aria-label="Rendered preview of your HTML"></iframe>
+          </div>
+
+          <!-- Clean HTML view -->
+          <div id="view-clean" class="tab-panel" role="tabpanel" aria-labelledby="tab-clean">
+            <textarea
+              id="clean-textarea"
+              class="code-textarea"
+              spellcheck="false"
+              readonly
+              aria-label="Clean HTML output â€” read-only"
+              placeholder="Switch to this tab to see stripped, clean HTMLâ€¦"></textarea>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="assertive"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener noreferrer">Hasan Rizvee</a>. All rights reserved.</p>
+        <p class="footer-made"><i class="fa-solid fa-heart" aria-hidden="true"></i> Part of <a href="../index.html">Utilvault</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></button>
+
+  <script src="../assets/js/nav.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

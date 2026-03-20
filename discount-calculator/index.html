@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discount Calculator â€” Sale Price & Savings | Utilvault</title>
+  <meta name="description" content="Calculate the final sale price and total savings from any percentage discount. See how much you save instantly. Free, no sign-up.">
+  <meta name="keywords" content="discount calculator, sale price calculator, savings calculator, percentage off, price after discount, how much do I save">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/discount-calculator/">
+  <meta name="theme-color" content="#14b8a6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .discount-results{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.25rem;}
+    .dc-stat{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:12px;padding:1rem 1.25rem;}
+    .dc-stat .dl{font-size:0.8rem;font-weight:600;color:var(--text-secondary);}
+    .dc-stat .dv{font-size:1.8rem;font-weight:800;color:var(--text-primary);margin-top:0.15rem;}
+    .dc-stat.savings{border-color:#10b981;background:rgba(16,185,129,0.06);}
+    .dc-stat.savings .dv{color:#10b981;}
+    .dc-stat.final{border-color:#14b8a6;background:rgba(20,184,166,0.06);}
+    .dc-stat.final .dv{color:#14b8a6;}
+    @media(max-width:480px){.discount-results{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-wallet"></i> Finance <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../tip-splitter/index.html"><i class="fa-solid fa-receipt"></i> Tip Splitter</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-percent"></i> Discount Calc</a>
+      <a href="../expense-logger/index.html"><i class="fa-solid fa-list-check"></i> Expense Logger</a>
+      <a href="../percentage-calculator/index.html"><i class="fa-solid fa-chart-line"></i> % Calculator</a>
+      <a href="../compound-interest/index.html"><i class="fa-solid fa-piggy-bank"></i> Compound Interest</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Discount Calculator</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-percent" style="color:#14b8a6;"></i></div>
+    <h1>Discount &amp; Sales <span class="text-gradient">Calculator</span></h1>
+    <p>See the final price and total savings from any percentage discount immediately.</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-percent" style="color:#14b8a6;"></i> Sale Details</h2></div>
+    <div class="tool-body">
+      <div class="form-row cols-2">
+        <div class="form-group"><label for="dc-original">Original Price ($)</label><input type="number" id="dc-original" value="100" min="0" step="0.01" placeholder="100.00"></div>
+        <div class="form-group"><label for="dc-pct">Discount (%)</label><input type="number" id="dc-pct" value="30" min="0" max="100" step="0.1" placeholder="30"></div>
+      </div>
+      <div class="discount-results">
+        <div class="dc-stat savings"><div class="dl">You Save</div><div class="dv" id="dc-save">$30.00</div></div>
+        <div class="dc-stat final"><div class="dl">Final Price</div><div class="dv" id="dc-final">$70.00</div></div>
+        <div class="dc-stat"><div class="dl">Discount Amount</div><div class="dv" id="dc-amount">$30.00</div></div>
+        <div class="dc-stat"><div class="dl">Savings Ratio</div><div class="dv" id="dc-ratio">30%</div></div>
+      </div>
+      <div style="margin-top:1rem;">
+        <label for="dc-tax" style="font-size:0.85rem;font-weight:600;color:var(--text-secondary);">Tax Rate (%) â€” optional</label>
+        <div class="form-row cols-2" style="margin-bottom:0;">
+          <div class="form-group"><input type="number" id="dc-tax" value="0" min="0" max="50" step="0.1" placeholder="0"></div>
+          <div class="dc-stat" style="margin-top:0;"><div class="dl">After Tax (final)</div><div class="dv" id="dc-aftertax">$70.00</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

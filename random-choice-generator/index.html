@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Choice Generator â€” Spin the Wheel | Utilvault</title>
+  <meta name="description" content="Can't decide? Enter your options and spin the wheel to get a random winner. Perfect for picking dinner, movies, or team assignments. Free, no sign-up.">
+  <meta name="keywords" content="random choice generator, spin the wheel, random picker, decision maker, random winner, random selector">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/random-choice-generator/">
+  <meta name="theme-color" content="#f59e0b">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .wheel-wrap{display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:1.5rem;}
+    canvas#wheel{max-width:300px;max-height:300px;border-radius:50%;box-shadow:var(--shadow-lg);}
+    .winner-badge{font-size:1.5rem;font-weight:800;text-align:center;padding:1rem 2rem;border-radius:14px;background:rgba(245,158,11,0.12);border:2px solid rgba(245,158,11,0.4);color:#f59e0b;display:none;}
+    .options-textarea{min-height:140px;resize:vertical;}
+    .spin-btn{background:linear-gradient(135deg,#f59e0b,#ef4444);color:white;font-size:1.1rem;}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-house"></i> Life &amp; Home <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../kitchen-unit-converter/index.html"><i class="fa-solid fa-utensils"></i> Kitchen Converter</a>
+      <a href="../date-duration-calculator/index.html"><i class="fa-solid fa-calendar-days"></i> Date Duration</a>
+      <a href="../cooking-timer/index.html"><i class="fa-solid fa-stopwatch"></i> Cooking Timer</a>
+      <a href="../fuel-trip-calculator/index.html"><i class="fa-solid fa-gas-pump"></i> Fuel Trip Cost</a>
+      <a href="./index.html" class="active"><i class="fa-solid fa-shuffle"></i> Random Choice</a>
+      <a href="../unit-price-comparator/index.html"><i class="fa-solid fa-tags"></i> Unit Price Compare</a>
+      <a href="../world-clock/index.html"><i class="fa-solid fa-earth-americas"></i> World Clock</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Random Choice Generator</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-solid fa-shuffle" style="color:#f59e0b;"></i></div>
+    <h1>Random Choice <span class="text-gradient">Generator</span></h1>
+    <p>Enter your options (one per line) and spin the wheel to pick a random winner!</p>
+  </div>
+  <div class="tool-box">
+    <div class="tool-box-header"><h2><i class="fa-solid fa-list" style="color:#f59e0b;"></i> Your Options</h2></div>
+    <div class="tool-body">
+      <div class="form-group">
+        <label for="rc-options">Options (one per line)</label>
+        <textarea id="rc-options" class="options-textarea" placeholder="Pizza&#10;Sushi&#10;Burgers&#10;Tacos&#10;Pasta"></textarea>
+      </div>
+      <button class="btn-tool spin-btn" id="rc-spin"><i class="fa-solid fa-shuffle"></i> Pick Random!</button>
+      <div class="wheel-wrap">
+        <canvas id="wheel" width="300" height="300"></canvas>
+        <div id="rc-winner" class="winner-badge"></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

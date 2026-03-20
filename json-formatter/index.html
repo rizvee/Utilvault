@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON Formatter & Validator â€” Prettify, Minify, Validate | Utilvault</title>
+  <meta name="description"
+    content="Prettify, minify, and validate JSON with syntax highlighting and clear error messages. Works 100% in your browser. Free, no sign-up.">
+  <meta name="keywords"
+    content="json formatter, json validator, prettify json, minify json, json beautifier, json linter, format json online">
+  <meta name="author" content="Hasan Rizvee">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/json-formatter/">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .jf-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .jf-pane {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .jf-pane label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .jf-textarea {
+      flex: 1;
+      min-height: 420px;
+      width: 100%;
+      background: #1a1f2e;
+      color: #abb2bf;
+      border: none;
+      border-radius: 10px;
+      padding: 1.25rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      resize: vertical;
+      outline: none;
+      line-height: 1.6;
+    }
+
+    .jf-actions-top {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .jf-btn {
+      padding: 0.55rem 1rem;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: var(--font-main);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .jf-btn:hover {
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+
+    .jf-btn.primary {
+      background: #3b82f6;
+      color: white;
+      border-color: #3b82f6;
+    }
+
+    .jf-btn.primary:hover {
+      background: #2563eb;
+    }
+
+    .jf-status {
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .jf-status.valid {
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .jf-status.invalid {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    @media(max-width:700px) {
+      .jf-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header role="banner">
+    <nav class="nav-container" aria-label="Main navigation">
+      <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+        <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i
+              class="fa-solid fa-code"></i> Developer <i class="fa-solid fa-chevron-down"></i></button>
+          <div class="nav-dropdown-menu">
+            <a href="./index.html" class="active"><i class="fa-solid fa-brackets-curly"></i> JSON Formatter</a>
+            <a href="../base64/index.html"><i class="fa-solid fa-file-code"></i> Base64</a>
+            <a href="../url-encoder/index.html"><i class="fa-solid fa-link"></i> URL Encoder</a>
+            <a href="../html-entity/index.html"><i class="fa-solid fa-code"></i> HTML Entities</a>
+            <a href="../image-to-webp/index.html"><i class="fa-solid fa-image"></i> Image â†’ WebP</a>
+            <a href="../css-glassmorphism/index.html"><i class="fa-solid fa-droplet"></i> Glassmorphism</a>
+            <a href="../contrast-checker/index.html"><i class="fa-solid fa-circle-half-stroke"></i> Contrast Checker</a>
+            <a href="../utm-builder/index.html"><i class="fa-solid fa-chart-simple"></i> UTM Builder</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i
+            class="fa-solid fa-moon"></i></button>
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i
+            class="fa-solid fa-bars"></i></button>
+      </div>
+    </nav>
+  </header>
+  <nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span
+      class="sep">â€º</span><span class="current">JSON Formatter</span></nav>
+
+  <main id="main-content" class="container page-wrapper" role="main" style="max-width:1100px;">
+    <div class="header-section text-center">
+      <div class="icon-wrapper glass-panel"><i class="fa-solid fa-brackets-curly" style="color:#3b82f6;"></i></div>
+      <h1>JSON Formatter &amp; <span class="text-gradient">Validator</span></h1>
+      <p>Paste messy JSON, instantly prettify, validate, or minify it. Syntax errors shown clearly.</p>
+    </div>
+    <div class="jf-actions-top" style="margin-bottom:1rem;">
+      <button class="jf-btn primary" id="jf-format"><i class="fa-solid fa-align-left"></i> Format / Prettify</button>
+      <button class="jf-btn" id="jf-minify"><i class="fa-solid fa-compress"></i> Minify</button>
+      <button class="jf-btn" id="jf-validate"><i class="fa-solid fa-check"></i> Validate</button>
+      <button class="jf-btn" id="jf-copy"><i class="fa-regular fa-copy"></i> Copy Output</button>
+      <button class="jf-btn" id="jf-clear"><i class="fa-solid fa-trash"></i> Clear</button>
+      <div class="jf-status" id="jf-status" style="display:none;"></div>
+    </div>
+    <div class="jf-layout">
+      <div class="jf-pane">
+        <label><i class="fa-solid fa-arrow-right-to-bracket"></i> Input JSON</label>
+        <textarea id="jf-input" class="jf-textarea" spellcheck="false"
+          placeholder='{"name":"Utilvault","version":1,"free":true}'></textarea>
+      </div>
+      <div class="jf-pane">
+        <label><i class="fa-solid fa-arrow-right-from-bracket"></i> Output</label>
+        <textarea id="jf-output" class="jf-textarea" readonly spellcheck="false"></textarea>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;">
+        <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights
+          reserved.</p>
+        <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+      </div>
+    </div>
+  </footer>
+  <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="../assets/js/nav.js"></script>
+  <script src="./app.js"></script>
+</body>
+
+</html>

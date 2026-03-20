@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown to HTML Converter â€” Live Preview | Utilvault</title>
+  <meta name="description" content="Convert Markdown to clean HTML with a real-time split preview. Supports headings, bold, italic, lists, links, code blocks, and tables. Free, no sign-up.">
+  <meta name="keywords" content="markdown to html, markdown converter, markdown preview, markdown editor, md to html, markdown parser">
+  <meta name="author" content="Hasan Rizvee"><meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://rizvee.github.io/Utilvault/markdown-to-html/">
+  <meta name="theme-color" content="#8b5cf6">
+  <link rel="stylesheet" href="../assets/css/global.css">
+  <link rel="stylesheet" href="../assets/css/tool-shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .md-layout{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--glass-border);border-radius:14px;overflow:hidden;}
+    .md-pane{display:flex;flex-direction:column;}
+    .md-pane-header{padding:0.75rem 1.25rem;background:var(--bg-secondary);border-bottom:1px solid var(--glass-border);font-size:0.82rem;font-weight:700;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center;gap:0.4rem;}
+    .md-pane:first-child{border-right:1px solid var(--glass-border);}
+    .md-input{flex:1;width:100%;min-height:420px;padding:1.25rem;background:var(--bg-primary);border:none;outline:none;font-family:'Courier New',monospace;font-size:0.9rem;color:var(--text-primary);resize:none;line-height:1.65;}
+    .md-preview{flex:1;min-height:420px;padding:1.25rem;background:var(--bg-primary);overflow-y:auto;font-size:0.95rem;line-height:1.7;color:var(--text-primary);}
+    .md-preview h1,.md-preview h2,.md-preview h3{margin:0.75rem 0 0.5rem;font-weight:700;}
+    .md-preview code{background:var(--bg-secondary);padding:0.1em 0.35em;border-radius:4px;font-family:'Courier New',monospace;font-size:0.87em;}
+    .md-preview pre{background:var(--bg-secondary);padding:1rem;border-radius:8px;overflow-x:auto;margin:0.75rem 0;}
+    .md-preview a{color:var(--accent);}
+    .md-preview ul,.md-preview ol{padding-left:1.5rem;}
+    .md-preview blockquote{border-left:4px solid #8b5cf6;padding-left:1rem;color:var(--text-secondary);margin:0.75rem 0;}
+    .md-preview table{border-collapse:collapse;width:100%;margin:0.75rem 0;}
+    .md-preview th,.md-preview td{border:1px solid var(--border-color);padding:0.45rem 0.75rem;}
+    .md-preview th{background:var(--bg-secondary);}
+    .md-actions{padding:0.85rem 1.25rem;border-top:1px solid var(--glass-border);display:flex;gap:0.5rem;flex-wrap:wrap;}
+    @media(max-width:700px){.md-layout{grid-template-columns:1fr;} .md-pane:first-child{border-right:none;border-bottom:1px solid var(--glass-border);}}
+  </style>
+</head>
+<body>
+<header role="banner"><nav class="nav-container" aria-label="Main navigation">
+  <a href="../index.html" class="logo"><i class="fa-solid fa-vault"></i> Util<span>vault</span></a>
+  <div class="nav-links" id="nav-links">
+    <a href="../index.html">Home</a>
+
+        <!-- Featured -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-star" aria-hidden="true" style="color:#eab308;"></i> Featured <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="../qr-generator/index.html" role="menuitem"><i class="fa-solid fa-qrcode"></i> QR Code Generator</a>
+            <a href="../html-composer/index.html" role="menuitem"><i class="fa-solid fa-code"></i> HTML Composer</a>
+            <a href="../currency-converter/index.html" role="menuitem"><i class="fa-solid fa-coins"></i> Currency Converter</a>
+            <a href="../unit-converter/index.html" role="menuitem"><i class="fa-solid fa-scale-balanced"></i> Unit Converter</a>
+          </div>
+        </div>
+    <div class="nav-dropdown"><button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false"><i class="fa-solid fa-pencil"></i> Productivity <i class="fa-solid fa-chevron-down"></i></button>
+    <div class="nav-dropdown-menu">
+      <a href="../scratchpad/index.html"><i class="fa-solid fa-note-sticky"></i> Scratchpad</a>
+      <a href="../word-counter/index.html"><i class="fa-solid fa-font"></i> Word Counter</a>
+      <a href="../case-converter/index.html"><i class="fa-solid fa-text-height"></i> Case Converter</a>
+      <a href="../list-randomizer/index.html"><i class="fa-solid fa-list-ol"></i> List Randomizer</a>
+      <a href="./index.html" class="active"><i class="fa-brands fa-markdown"></i> Markdown â†’ HTML</a>
+      <a href="../lorem-ipsum/index.html"><i class="fa-solid fa-paragraph"></i> Lorem Ipsum</a>
+    </div></div>
+  </div>
+  <div class="nav-actions">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+    <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav></header>
+<nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i> Home</a><span class="sep">â€º</span><span class="current">Markdown â†’ HTML</span></nav>
+
+<main id="main-content" class="container page-wrapper" role="main" style="max-width:1100px;">
+  <div class="header-section text-center">
+    <div class="icon-wrapper glass-panel"><i class="fa-brands fa-markdown" style="color:#8b5cf6;"></i></div>
+    <h1>Markdown â†’ <span class="text-gradient">HTML Converter</span></h1>
+    <p>Write Markdown on the left, see live HTML preview on the right. Copy the raw HTML any time.</p>
+  </div>
+  <div class="md-layout">
+    <div class="md-pane">
+      <div class="md-pane-header"><i class="fa-brands fa-markdown"></i> Markdown Input</div>
+      <textarea id="md-input" class="md-input" spellcheck="false" placeholder="# Hello World&#10;&#10;Write **Markdown** here..."># Welcome to Utilvault âœ¨&#10;&#10;This is a **Markdown to HTML** converter.&#10;&#10;## Features&#10;- Real-time preview&#10;- Supports *italic*, **bold**, ~~strikethrough~~&#10;- Code blocks&#10;&#10;```js&#10;const greeting = 'Hello World';&#10;console.log(greeting);&#10;```&#10;&#10;> Blockquotes work too!&#10;&#10;| Name | Value |&#10;|---|---|&#10;| Alpha | 1 |&#10;| Beta  | 2 |</textarea>
+    </div>
+    <div class="md-pane">
+      <div class="md-pane-header"><i class="fa-solid fa-eye"></i> Live Preview</div>
+      <div id="md-preview" class="md-preview"></div>
+    </div>
+  </div>
+  <div class="md-actions">
+    <button class="btn-secondary" id="md-copy-html"><i class="fa-regular fa-copy"></i> Copy HTML</button>
+    <button class="btn-secondary" id="md-copy-md"><i class="fa-brands fa-markdown"></i> Copy Markdown</button>
+    <button class="btn-secondary" id="md-clear"><i class="fa-solid fa-trash"></i> Clear</button>
+  </div>
+</main>
+
+<div id="toast" class="toast"></div>
+<footer class="site-footer"><div class="footer-inner"><div class="footer-bottom" style="border-top:none;padding-top:0;">
+  <p>&copy; 2026 <a href="https://rizvee.github.io" target="_blank" rel="noopener">Hasan Rizvee</a>. All rights reserved.</p>
+  <p class="footer-made"><i class="fa-solid fa-heart"></i> Part of <a href="../index.html">Utilvault</a></p>
+</div></div></footer>
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="../assets/js/nav.js"></script>
+<script src="./app.js"></script>
+</body></html>

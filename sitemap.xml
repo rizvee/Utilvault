@@ -1,53 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://rizvee.github.io/Utilvault/</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://rizvee.github.io/Utilvault/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  
+  <!-- Original Tools -->
+  <url><loc>https://rizvee.github.io/Utilvault/unit-converter/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/currency-converter/</loc><lastmod>2026-03-20</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/password-generator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/age-calculator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/readme-generator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/qr-generator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/html-composer/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
-  <url>
-    <loc>https://rizvee.github.io/Utilvault/unit-converter/</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <!-- Everyday Life (7) -->
+  <url><loc>https://rizvee.github.io/Utilvault/kitchen-unit-converter/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/date-duration-calculator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/cooking-timer/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/fuel-trip-calculator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/random-choice-generator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/unit-price-comparator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/world-clock/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <url>
-    <loc>https://rizvee.github.io/Utilvault/currency-converter/</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <!-- Health & Fitness (4) -->
+  <url><loc>https://rizvee.github.io/Utilvault/bmi-calculator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/sleep-calculator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/water-tracker/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/breath-pacer/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <url>
-    <loc>https://rizvee.github.io/Utilvault/password-generator/</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <!-- Finance (5) -->
+  <url><loc>https://rizvee.github.io/Utilvault/tip-splitter/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/discount-calculator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/expense-logger/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/percentage-calculator/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/compound-interest/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <url>
-    <loc>https://rizvee.github.io/Utilvault/age-calculator/</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <!-- Productivity & Text (6 new) -->
+  <url><loc>https://rizvee.github.io/Utilvault/scratchpad/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/word-counter/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/case-converter/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/list-randomizer/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/markdown-to-html/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/lorem-ipsum/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <url>
-    <loc>https://rizvee.github.io/Utilvault/readme-generator/</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://rizvee.github.io/Utilvault/qr-generator/</loc>
-    <lastmod>2026-03-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <!-- Developer & Web (8) -->
+  <url><loc>https://rizvee.github.io/Utilvault/json-formatter/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/base64/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/url-encoder/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/html-entity/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/image-to-webp/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/css-glassmorphism/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/contrast-checker/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rizvee.github.io/Utilvault/utm-builder/</loc><lastmod>2026-03-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
 </urlset>

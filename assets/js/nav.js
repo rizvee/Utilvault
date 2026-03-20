@@ -39,12 +39,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Close menu on outside click
+  // Close mobile menu on outside click
   document.addEventListener('click', (e) => {
     if (!e.target.closest('header') && navLinks?.classList.contains('active')) {
       navLinks.classList.remove('active');
       const icon = mobileMenuBtn?.querySelector('i');
       if (icon) icon.className = 'fa-solid fa-bars';
+    }
+  });
+
+  /* ── Dropdown Menus ── */
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
+
+  dropdowns.forEach(dropdown => {
+    const btn = dropdown.querySelector('.nav-dropdown-btn');
+    const menu = dropdown.querySelector('.nav-dropdown-menu');
+
+    // Toggle on click (works for both desktop and mobile)
+    btn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdown.classList.contains('open');
+
+      // Close all other dropdowns first
+      dropdowns.forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('.nav-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!isOpen) {
+        dropdown.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown')) {
+      dropdowns.forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('.nav-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  // Close dropdowns on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropdowns.forEach(d => {
+        d.classList.remove('open');
+        d.querySelector('.nav-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+      });
     }
   });
 
